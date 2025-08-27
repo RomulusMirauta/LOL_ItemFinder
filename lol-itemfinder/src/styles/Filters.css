@@ -1,0 +1,131 @@
+/* Map filter row alignment fix */
+.map-filter-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 4px;
+}
+/* Custom include checkbox styles */
+.custom-include-checkbox {
+  position: relative;
+  display: inline-block;
+  width: 10px;
+  height: 18px;
+}
+.custom-include-checkbox input[type="checkbox"] {
+  opacity: 0;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  cursor: pointer;
+}
+.custom-include-checkmark {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 22px;
+  height: 22px;
+  background: #232c3a;
+  border: 1.5px solid #76a876a1;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #4caf50;
+  font-size: 20px;
+  font-weight: 9000;
+  pointer-events: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+}
+/* Custom exclude checkbox styles */
+.custom-exclude-checkbox {
+  position: relative;
+  display: inline-block;
+  width: 10px;
+  height: 18px;
+}
+.custom-exclude-checkbox input[type="checkbox"] {
+  opacity: 0;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  cursor: pointer;
+}
+.custom-exclude-checkmark {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 22px;
+  height: 22px;
+  background: #232c3a;
+  border: 1.5px solid #947070;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ff4c4c;
+  font-size: 20px;
+  font-weight: 9000;
+  pointer-events: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+}
+.filters-container {
+  width: 220px auto;
+  background: #232c3a;
+  padding: 18px 18px 18px 18px;
+  border-radius: 12px;
+  color: #e0e6ed;
+  margin-top: 15px;
+  margin-bottom: auto;
+  margin-left: 80px;
+  margin-right: auto;
+  min-height: 80vh;
+  max-height: 250vh;
+  align-self: flex-start;
+  position: static;
+  /* border: 3px solid #f0c674;  */
+  /* visibility enhancer*/
+}
+.filters-title {
+  color: #f0c674;
+  font-size: 1.6em; /* <-- Increase this value for a bigger heading */
+  margin-top: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.filters-section {
+  margin-bottom: 25px;
+  /* text-align: left; */
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+/* Style for Misc filter category (same as other sections) */
+.filters-section-misc {
+  margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.filters-section-last {
+  margin-bottom: 0;
+}
+.filters-label {
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  text-align: left;
+  gap: 8px;
+}
+.filters-section > strong {
+  font-size: 1.1em;
+  /* color: #f0c674; */
+  font-weight: 700;
+  /* margin-bottom: 6px; */
+}

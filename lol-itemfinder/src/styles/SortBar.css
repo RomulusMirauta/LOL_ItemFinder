@@ -1,0 +1,21 @@
+.sort-bar-container {
+  align-self: flex-end;
+  /* margin-top: 8px; */
+  /* margin-right: 32px; */
+  margin-right: 60px;
+  min-width: 60px;
+  /* margin-left: 200px; */
+  margin-left: -65px;
+
+  display: flex;
+  z-index: 10;
+  align-items: center;
+}
+.sort-bar-select {
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid #232c3a;
+  background: #232c3a;
+  color: #e0e6ed;
+  font-weight: 500;
+}

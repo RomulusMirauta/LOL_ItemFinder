@@ -1,0 +1,22 @@
+/* import SortBar from './components/SortBar';
+import SortBar from './styles/SortBar.css'; */
+
+.item-grid {
+  display: grid;
+  /* grid-template-columns: repeat(7, 1fr); */
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 20px; 
+  /* ok */
+  /* padding: 0 5vw 32px; */
+  /* padding: 32px; */
+  padding: 20px 32px 32px 32px;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  min-height: 340px;
+  min-width: 340px;
+  max-width: 1520px;
+  /* justify-items: center; */
+  /* border: 3px solid #f0c674;  */
+  /*Change thickness, style, or color as needed */
+}

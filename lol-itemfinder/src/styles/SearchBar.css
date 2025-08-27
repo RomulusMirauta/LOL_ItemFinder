@@ -1,0 +1,22 @@
+.searchbar-container {
+  display: flex;
+  justify-content: center; /* ok */
+  /* margin-bottom: 24px; */
+  margin: 0px 24px 24px 0px;
+  /* align-self: flex-end; */
+  /* align-content: flex-start; */
+  width: 100%;
+}
+.searchbar-input {
+  width: 340px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  font-size: 1.1em;
+  background: #232c3a;
+  color: #e0e6ed;
+  box-shadow: 0 2px 8px #0006;
+  /* align-self: flex-end; */
+  /* text-align: center;*/
+  /* This centers the placeholder and input text */
+}

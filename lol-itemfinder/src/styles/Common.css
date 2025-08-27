@@ -1,0 +1,24 @@
+.item-count-container {
+  display: flex;
+  justify-content: center;
+  /* width: calc(100% - var(--sort-bar-container-width)); */
+  width: 100%;
+}
+.item-count-under-search {
+  text-align: center;
+  /* margin: 12px 0 18px 0; */
+  margin: 0px 315px 0px 0;
+  color: #f0c674;
+  font-weight: 600;
+  font-size: 1.1em;
+}
+.error-text {
+  color: #ff4c4c;
+  text-align: center;
+  font-size: 1.2em;
+  margin-top: 24px;
+}
+.loading-text {
+  text-align: center;
+  font-size: 1.2em;
+}
