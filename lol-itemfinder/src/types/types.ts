@@ -41,6 +41,10 @@ export type FilterState = {
   // Class include / exclude
   class: string[];
   excludeClass: string[];
+
+  // Add Game Mode filters
+  gameModeInclude: string[];
+  gameModeExclude: string[];
 };
 
 export interface FiltersProps {

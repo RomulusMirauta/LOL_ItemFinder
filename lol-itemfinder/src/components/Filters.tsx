@@ -7,6 +7,14 @@ const MAPS = [
   { id: '12', name: 'Howling Abyss' },
 ];
 
+const GAME_MODES = [
+  { id: 'CLASSIC', name: 'Classic' },
+  { id: 'ARAM', name: 'ARAM' },
+  { id: 'URF', name: 'URF' },
+  { id: 'ARENA', name: 'Arena' },
+  { id: 'TEAMFIGHTTACTICS', name: 'Teamfight Tactics' },
+];
+
 import '../styles/Filters.css';
 
 const Filters: React.FC<FiltersProps> = ({ filterState, setFilterState }) => {
@@ -57,6 +65,8 @@ const Filters: React.FC<FiltersProps> = ({ filterState, setFilterState }) => {
       excludeStat: [],
       class: [],
       excludeClass: [],
+      gameModeInclude: [],
+      gameModeExclude: [],
     });
   }
 
@@ -172,6 +182,40 @@ const Filters: React.FC<FiltersProps> = ({ filterState, setFilterState }) => {
                 </span>
               </label>
               <span className="filters-checkbox-text" style={{marginLeft: '10px'}}>{map.name}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="filters-section">
+        <strong>Game Mode</strong>
+        <div className="filters-checkbox-group">
+          {GAME_MODES.map(mode => (
+            <div key={mode.id} className="map-filter-row">
+              <label className="custom-include-checkbox">
+                <input
+                  type="checkbox"
+                  checked={filterState.gameModeInclude.includes(mode.id)}
+                  onChange={() => handleChange('gameModeInclude', mode.id)}
+                  disabled={filterState.gameModeExclude.includes(mode.id)}
+                  style={filterState.gameModeExclude.includes(mode.id) ? { cursor: 'not-allowed', opacity: 0.5 } : {}}
+                />
+                <span className="custom-include-checkmark">
+                  {filterState.gameModeInclude.includes(mode.id) ? '✓' : ''}
+                </span>
+              </label>
+              <label className="custom-exclude-checkbox" style={{marginLeft: '8px'}}>
+                <input
+                  type="checkbox"
+                  checked={filterState.gameModeExclude.includes(mode.id)}
+                  onChange={() => handleChange('gameModeExclude', mode.id)}
+                  disabled={filterState.gameModeInclude.includes(mode.id)}
+                  style={filterState.gameModeInclude.includes(mode.id) ? { cursor: 'not-allowed', opacity: 0.5 } : {}}
+                />
+                <span className="custom-exclude-checkmark">
+                  {filterState.gameModeExclude.includes(mode.id) ? '✗' : ''}
+                </span>
+              </label>
+              <span className="filters-checkbox-text" style={{marginLeft: '10px'}}>{mode.name}</span>
             </div>
           ))}
         </div>

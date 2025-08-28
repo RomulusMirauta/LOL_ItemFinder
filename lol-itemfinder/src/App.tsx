@@ -30,6 +30,8 @@ function App() {
     excludeStat: [],
     class: [],
     excludeClass: [],
+    gameModeInclude: [],
+    gameModeExclude: [],
   });
   const [items, setItems] = useState<Record<string, Item>>({});
   const [search, setSearch] = useState('');
