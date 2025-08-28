@@ -6,6 +6,11 @@
   /* align-self: flex-end; */
   /* align-content: flex-start; */
   width: 100%;
+  min-height: 10px;
+  max-height: 100px;
+  /* max-width: fit-content; */
+  min-width: 1500px;
+  max-width: auto;
 }
 .searchbar-input {
   width: 340px;

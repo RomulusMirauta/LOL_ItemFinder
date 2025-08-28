@@ -11,4 +11,5 @@ export type Item = {
   rarityLegendary?: boolean;
   rarityMythic?: boolean;
   rarityGeneric?: boolean;
+  gameModes?: string[];
 };

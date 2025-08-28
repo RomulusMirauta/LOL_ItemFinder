@@ -163,6 +163,22 @@ export function filterBySidebar(
       !excludeClassArr.some(cls => item.tags?.includes(cls) || item.type?.includes(cls))
     );
   }
+  // Game Mode filter logic
+  const gameModeIncludeArr = filterState.gameModeInclude;
+  const gameModeExcludeArr = filterState.gameModeExclude;
+  if (gameModeIncludeArr.length > 0 || gameModeExcludeArr.length > 0) {
+    filtered = filtered.filter(item => {
+      // Use type assertion to allow gameModes property
+      const modes: string[] = (item as Item & { gameModes?: string[] }).gameModes ?? [];
+      // Include if available in any included mode
+      const isIncluded = gameModeIncludeArr.length === 0 || gameModeIncludeArr.some(mode => modes.includes(mode));
+      // Exclude if available ONLY in excluded modes and not in any included mode
+      const isExclusiveToExcluded = gameModeExcludeArr.some(mode =>
+        modes.includes(mode) && !gameModeIncludeArr.some(includeMode => modes.includes(includeMode))
+      );
+      return isIncluded && !isExclusiveToExcluded;
+    });
+  }
   return filtered;
 }
 
