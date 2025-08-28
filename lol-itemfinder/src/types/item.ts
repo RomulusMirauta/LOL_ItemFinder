@@ -5,6 +5,7 @@ export type Item = {
   gold?: { total: number; purchasable?: boolean }; // Make gold optional to handle edge cases
   tags?: string[];
   type?: string[];
+  // type: string[]; // Make type mandatory
   plaintext?: string;
   maps?: { [key: string]: boolean };
   requiredChampion?: string;

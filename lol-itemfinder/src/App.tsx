@@ -87,7 +87,14 @@ function App() {
         <MainTitle version={version} />
         <Filters filterState={filterState} setFilterState={setFilterState} />
       </div>
-      <div className="main-content" style={{ flex: 1, marginLeft: '32px', marginRight: '0px', marginTop: '32px', marginBottom: '32px' }}>
+      <div className="main-content" style={{ 
+        flex: 1, 
+        marginLeft: '32px', 
+        marginRight: '0px', 
+        marginTop: '32px', 
+        marginBottom: '32px',
+        // minWidth: '400px',
+      }}>
         <SearchBar value={search} onChange={setSearch} />
         <div style={{ display: 'flex', alignItems: 'center', marginBottom: '5px', marginLeft: '100px' }}>
           <div className="sort-bar-container" style={{ flex: '0 0 auto' }}>

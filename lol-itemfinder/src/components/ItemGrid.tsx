@@ -24,11 +24,17 @@ const ItemGrid: React.FC<ItemGridProps> = ({ items, version, activeItem, setActi
 export const spectralItems = [
   { 
     name: 'Poro', 
-    image: { full: 'placeholder.png' }, 
-    gold: { total: 0, purchasable: false }, 
-    plaintext: 'Poro Description', 
-    description: 'Try to search for another keyword', 
-    tags: [] 
+    // image: { full: 'placeholder.png' }, 
+    image: { full: 'logo2.png' }, 
+    // gold: { total: 9999999999, purchasable: false },
+    gold: { total: 9999, purchasable: false },
+    // gold: { total: '1.000.000.000', purchasable: false },
+    // gold: { total: '∞', purchasable: false }, 
+    // gold: { total: 'Not', purchasable: false }, 
+    plaintext: 'Try to search for another keyword and/or different combinations of filters', 
+    description: 'Poro desires Poro-Snax', 
+    tags: []
+    // type: 'Poro' // <-- or any valid type from ITEM_TYPES
   },
 ];
 

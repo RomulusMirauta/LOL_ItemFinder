@@ -82,10 +82,11 @@
   border-radius: 12px;
   color: #e0e6ed;
   margin-top: 15px;
-  margin-bottom: auto;
+  margin-bottom: 15px;
   margin-left: 80px;
   margin-right: auto;
-  min-height: 80vh;
+  /* min-height: 80vh; */
+  min-height: auto;
   max-height: 250vh;
   align-self: flex-start;
   position: static;
@@ -94,7 +95,7 @@
 }
 .filters-title {
   color: #f0c674;
-  font-size: 1.6em; /* <-- Increase this value for a bigger heading */
+  font-size: 1.7em; /* <-- Increase this value for a bigger heading */
   margin-top: 10px;
   margin-bottom: 20px;
   text-align: center;

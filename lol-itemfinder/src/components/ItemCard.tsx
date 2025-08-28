@@ -10,7 +10,11 @@ const ItemCard: React.FC<ItemCardProps> = ({ item, version, isActive, setActiveI
     onClick={() => setActiveItem(isActive ? null : item.name)}
   >
     <img
-      src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/item/${item.image.full}`}
+      // src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/item/${item.image.full}`}
+      src={
+        item.name === 'Poro'
+        ? `/logo2.png` // Use public/logo2.png for Poro
+        : `https://ddragon.leagueoflegends.com/cdn/${version}/img/item/${item.image.full}`}
       alt={item.name}
       className="item-card-img"
     />
