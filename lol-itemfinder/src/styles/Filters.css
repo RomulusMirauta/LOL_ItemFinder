@@ -1,3 +1,22 @@
+.filters-container {
+  width: 220px auto;
+  background: #232c3a;
+  padding: 18px 18px 18px 18px;
+  border-radius: 12px;
+  color: #e0e6ed;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  margin-left: 80px;
+  margin-right: auto;
+  /* min-height: 80vh; */
+  min-height: auto;
+  max-height: 250vh;
+  align-self: flex-start;
+  position: static;
+  border: 3px solid #f0c674; 
+  /* visibility enhancer*/
+}
+/* HERE CONTAINER */
 /* Map filter row alignment fix */
 .map-filter-row {
   display: flex;
@@ -74,24 +93,6 @@
   font-weight: 9000;
   pointer-events: none;
   box-shadow: 0 2px 8px rgba(0,0,0,0.18);
-}
-.filters-container {
-  width: 220px auto;
-  background: #232c3a;
-  padding: 18px 18px 18px 18px;
-  border-radius: 12px;
-  color: #e0e6ed;
-  margin-top: 15px;
-  margin-bottom: 15px;
-  margin-left: 80px;
-  margin-right: auto;
-  /* min-height: 80vh; */
-  min-height: auto;
-  max-height: 250vh;
-  align-self: flex-start;
-  position: static;
-  /* border: 3px solid #f0c674;  */
-  /* visibility enhancer*/
 }
 .filters-title {
   color: #f0c674;

@@ -31,7 +31,7 @@ export const spectralItems = [
     // gold: { total: '1.000.000.000', purchasable: false },
     // gold: { total: '∞', purchasable: false }, 
     // gold: { total: 'Not', purchasable: false }, 
-    plaintext: 'Try to search for another keyword and/or different combinations of filters', 
+    plaintext: 'Try to search for another keyword and/or different combination of filters', 
     description: 'Poro desires Poro-Snax', 
     tags: []
     // type: 'Poro' // <-- or any valid type from ITEM_TYPES

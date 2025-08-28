@@ -13,6 +13,7 @@ import { sortItems } from './utils/itemSort';
 import type { SortType } from './utils/itemSort';
 import type { Item } from './types/item';
 import { fetchLatestVersion, fetchItems } from './api/riotApi';
+import ItemCount from './components/ItemCount';
 
 function App() {
   useEffect(() => {
@@ -82,11 +83,22 @@ function App() {
   const [activeItem, setActiveItem] = useState<string | null>(null);
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'flex-start', width: '100%' }}>
-      <div className="sidebar-header" style={{ flex: '0 0 auto' }}>
+    <div className="app-main-parent" style={{ 
+      display: 'flex', 
+      width: '100%', 
+      border: '5px solid #ff0000' 
+      }}> 
+      {/* HERE CONTAINER */}
+      {/* Sidebar: MainTitle + Filters */}
+      <div className="sidebar-header" style={{ 
+        flex: '0 0 auto', 
+        border: '5px solid rgb(11, 134, 7)'
+        }}>
+          {/* HERE CONTAINER */}
         <MainTitle version={version} />
         <Filters filterState={filterState} setFilterState={setFilterState} />
       </div>
+      {/* Main content: SearchBar + SortBar + ItemGrid */}
       <div className="main-content" style={{ 
         flex: 1, 
         marginLeft: '32px', 
@@ -94,24 +106,32 @@ function App() {
         marginTop: '32px', 
         marginBottom: '32px',
         // minWidth: '400px',
-      }}>
+        border: '5px solid rgb(255, 0, 242)'
+        }}>
+          {/* HERE CONTAINER */}
         <SearchBar value={search} onChange={setSearch} />
-        <div style={{ display: 'flex', alignItems: 'center', marginBottom: '5px', marginLeft: '100px' }}>
-          <div className="sort-bar-container" style={{ flex: '0 0 auto' }}>
+        <div style={{ 
+          display: 'flex', 
+          alignItems: 'center', 
+          marginBottom: '5px', 
+          marginLeft: '100px', 
+          border: '4px solid rgb(68, 192, 214)' 
+          }}>
+            {/* HERE CONTAINER */}
+          {/* <div className="sort-bar-container" style={{ flex: '0 0 auto' }}> */}
+          <div className="sort-bar-container">
+          {/* <div className="sort-bar-container" style={{ flex: '0 0 auto', border: '3px solid #f0c674' }}> */}
             <SortBar value={sort} onChange={setSort} />
           </div>
-          <div className="item-count-container" style={{ flex: 1 }}>
-            <span className="item-count-under-search">
-              {`Showing ${
+          {/* <div className="item-count-container" style={{ flex: 1, border: '3px solid #f0c674' }}> */}
+          <div className="item-count-container">
+            <ItemCount
+              count={
                 sortedItems.length === 0
                   ? spectralItems.length
                   : sortedItems.length
-              } ${
-                (sortedItems.length === 1 || (sortedItems.length === 0 && spectralItems.length === 1))
-                  ? 'item'
-                  : 'items'
-              }`}
-            </span>
+              }
+            />
           </div>
         </div>
         {loading ? (

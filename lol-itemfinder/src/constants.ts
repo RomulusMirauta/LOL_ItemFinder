@@ -17,6 +17,7 @@ export const ITEM_STATS = [
   'Attack Speed',
   'On-Hit Effects',
   'Armor Penetration',
+  'Lethality *', 
   'Ability Power',
   'Mana & Regeneration',
   'Magic Penetration',
@@ -25,10 +26,11 @@ export const ITEM_STATS = [
   'Magic Resistance',
   'Ability Haste',
   'Movement Speed',
+  // 'Movement Speed on Basic Attack / Spell / Damage',
   // 'Life Steal (AA & Spells)',
   'Life Steal & Omnivamp',
-  'Tenacity',
-  'Active'
+  'Tenacity *',
+  'Active *'
 ];
 export const ITEM_CLASSES = [
   'Fighter', 

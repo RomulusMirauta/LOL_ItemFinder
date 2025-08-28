@@ -8,11 +8,12 @@ const MAPS = [
 ];
 
 const GAME_MODES = [
-  { id: 'CLASSIC', name: 'Classic' },
-  { id: 'ARAM', name: 'ARAM' },
-  { id: 'URF', name: 'URF' },
+  // { id: 'CLASSIC', name: 'Classic' },
+  // { id: 'ARAM', name: 'ARAM' },
+  // { id: 'URF', name: 'URF (Ultra Rapid Fire)' },
+  { id: 'DOOMBOTS', name: 'Doom Bots' }, // <-- Added Doom Bots
   { id: 'ARENA', name: 'Arena' },
-  { id: 'TEAMFIGHTTACTICS', name: 'Teamfight Tactics' },
+  // { id: 'TEAMFIGHTTACTICS', name: 'Teamfight Tactics' },
 ];
 
 import '../styles/Filters.css';
@@ -225,7 +226,7 @@ const Filters: React.FC<FiltersProps> = ({ filterState, setFilterState }) => {
         {ITEM_STATS.map((stat, idx) => {
           // Insert separators at the specified indices
           // Separator above Ability Haste (index 12)
-          const separatorIndices = [5, 8, 11, 14];
+          const separatorIndices = [6, 9, 12, 15];
           const separator =
             separatorIndices.includes(idx) ? (
               <hr style={{ border: 'none', borderTop: '1px solid #444', margin: '8px 0' }} />

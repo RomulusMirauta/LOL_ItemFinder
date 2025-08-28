@@ -1,17 +1,20 @@
 .searchbar-container {
   display: flex;
-  justify-content: center; /* ok */
+  justify-content: center; 
+  /* ok */
   /* margin-bottom: 24px; */
   margin: 0px 24px 24px 0px;
   /* align-self: flex-end; */
   /* align-content: flex-start; */
-  width: 100%;
+  /* width: 100%; */
   min-height: 10px;
   max-height: 100px;
   /* max-width: fit-content; */
-  min-width: 1500px;
-  max-width: auto;
+  /* min-width: 1500px; */
+  max-width: 400px;
+  border: 3px solid #f0c674; 
 }
+/* HERE CONTAINER */
 .searchbar-input {
   width: 340px;
   padding: 10px 16px;

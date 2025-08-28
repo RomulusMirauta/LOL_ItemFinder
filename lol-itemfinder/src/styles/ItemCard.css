@@ -34,7 +34,9 @@
   align-items: center;
   gap: 8px;
   margin-bottom: 4px;
+  border: 3px solid #f0c674; 
 }
+/* HERE CONTAINER */
 .item-card-gold {
   background: #232c3a;
   border-radius: 6px;
