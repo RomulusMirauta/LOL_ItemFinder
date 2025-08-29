@@ -46,66 +46,86 @@ export function filterBySidebar(
     });
   }
   const typeArr = filterState.type;
-  if (typeArr.length > 0) {
+  // Rarity filters
+  const rarityArr = typeArr.filter(type => ['Unique', 'Basic', 'Epic', 'Legendary'].includes(type));
+  if (rarityArr.length > 0) {
     filtered = filtered.filter(item => {
-      if (typeArr.includes('Champion-Specific')) {
-        return !!item.requiredChampion;
-      }
-      if (typeArr.includes('Starter')) {
-        if (item.requiredChampion) return false;
-        const desc = (item.description || '').toLowerCase();
-        const plain = (item.plaintext || '').toLowerCase();
-        return (
-          item.tags?.includes('Starter') ||
-          item.type?.includes('Starter') ||
-          desc.includes('starting') ||
-          plain.includes('starting')
-        );
-      }
-      if (typeArr.includes('Legendary')) {
-        const desc = (item.description || '').toLowerCase();
-        return (
-          item.rarityLegendary === true ||
-          item.tags?.includes('rarityLegendary') ||
-          item.type?.includes('rarityLegendary') ||
-          desc.includes('raritylegendary') ||
-          desc.includes('<raritylegendary>')
-        );
-      }
-      if (typeArr.includes('Mythic')) {
-        const desc = (item.description || '').toLowerCase();
-        return (
-          item.rarityMythic === true ||
-          desc.includes('raritymythic') ||
-          desc.includes('<raritymythic>')
-        );
-      }
-      if (typeArr.includes('Generic')) {
-        const desc = (item.description || '').toLowerCase();
-        return (
-          item.rarityGeneric === true ||
-          desc.includes('raritygeneric') ||
-          desc.includes('<raritygeneric>')
-        );
-      }
-      if (typeArr.includes('Consumable')) {
-        const consumableSpecialItems = [
-          'Total Biscuit of Everlasting Will'
-        ];
-        const isConsumable = item.tags?.includes('Consumable') || item.type?.includes('Consumable');
-        return isConsumable || consumableSpecialItems.includes(item.name);
-      }
-      if (typeArr.includes('Ward')) {
-        const isWard = item.tags?.includes('Ward') || 
-        item.type?.includes('Ward') || 
-        item.name.toLowerCase().includes(' ward') ||
-        item.name.toLowerCase().includes('trinket') ||
-        item.name.toLowerCase().includes('lens') || 
-        item.name.toLowerCase().includes('farsight') || 
-        item.description.toLowerCase().includes('warding');
-        return isWard;
-      }
-      return typeArr.some(type => item.tags?.includes(type) || item.type?.includes(type));
+      return rarityArr.some(rarity => {
+        if (rarity === 'Unique') {
+          const tags = (item.tags || []).map(t => t.toLowerCase());
+          const types = (item.type || []).map(t => t.toLowerCase());
+          return tags.includes('unique') || types.includes('unique');
+        }
+        if (rarity === 'Basic') {
+          const desc = (item.description || '').toLowerCase();
+          return (
+            item.rarityGeneric === true ||
+            desc.includes('raritygeneric') ||
+            desc.includes('<raritygeneric>') ||
+            desc.includes('</raritygeneric>')
+          );
+        }
+        if (rarity === 'Epic') {
+          const tags = (item.tags || []).map(t => t.toLowerCase());
+          const types = (item.type || []).map(t => t.toLowerCase());
+          return tags.includes('epic') || types.includes('epic');
+        }
+        if (rarity === 'Legendary') {
+          const desc = (item.description || '').toLowerCase();
+          return (
+            item.rarityLegendary === true ||
+            item.tags?.includes('rarityLegendary') ||
+            item.type?.includes('rarityLegendary') ||
+            desc.includes('raritylegendary') ||
+            desc.includes('<raritylegendary>') ||
+            desc.includes('legendary') ||
+            item.name.toLowerCase().includes('legendary')
+          );
+        }
+        return false;
+      });
+    });
+  }
+  // Type filters
+  const typeCategoryArr = typeArr.filter(type => ['Starter', 'Consumable', 'Ward', 'Boots'].includes(type));
+  if (typeCategoryArr.length > 0) {
+    filtered = filtered.filter(item => {
+      return typeCategoryArr.some(type => {
+        if (type === 'Starter') {
+          if (item.requiredChampion) return false;
+          const desc = (item.description || '').toLowerCase();
+          const plain = (item.plaintext || '').toLowerCase();
+          return (
+            item.tags?.includes('Starter') ||
+            item.type?.includes('Starter') ||
+            desc.includes('starting') ||
+            plain.includes('starting')
+          );
+        }
+        if (type === 'Consumable') {
+          const consumableSpecialItems = [
+            'Total Biscuit of Everlasting Will'
+          ];
+          const isConsumable = item.tags?.includes('Consumable') || item.type?.includes('Consumable');
+          return isConsumable || consumableSpecialItems.includes(item.name);
+        }
+        if (type === 'Ward') {
+          const isWard = item.tags?.includes('Ward') || 
+            item.type?.includes('Ward') || 
+            item.name.toLowerCase().includes(' ward') ||
+            item.name.toLowerCase().includes('trinket') ||
+            item.name.toLowerCase().includes('lens') || 
+            item.name.toLowerCase().includes('farsight') || 
+            item.description.toLowerCase().includes('warding');
+          return isWard;
+        }
+        if (type === 'Boots') {
+          const tags = (item.tags || []).map(t => t.toLowerCase());
+          const types = (item.type || []).map(t => t.toLowerCase());
+          return tags.includes('boots') || types.includes('boots') || item.name.toLowerCase().includes('boots');
+        }
+        return false;
+      });
     });
   }
   const statArr = filterState.stat;
@@ -253,9 +273,17 @@ export function filterBySidebar(
   }
   const classArr = filterState.class;
   if (classArr.length > 0) {
-    filtered = filtered.filter(item =>
-      classArr.some(cls => item.tags?.includes(cls) || item.type?.includes(cls))
-    );
+    filtered = filtered.filter(item => {
+      // Role filter logic for Fighter, Marksman, Assassin, Mage, Tank, Support
+      return classArr.some(cls => {
+        const clsLower = cls.toLowerCase();
+        // Check tags and type arrays for role match
+        const tags = (item.tags || []).map(t => t.toLowerCase());
+        const types = (item.type || []).map(t => t.toLowerCase());
+        // Allow partial match for flexibility (e.g. 'fighter' matches 'Legendary Fighter Item')
+        return tags.some(tag => tag.includes(clsLower)) || types.some(type => type.includes(clsLower));
+      });
+    });
   }
   const excludeTypeArr = filterState.excludeType;
   if (excludeTypeArr.length > 0) {
@@ -312,10 +340,20 @@ export function filterBySidebar(
       // Special rule: Doom Bots filter
       if (gameModeIncludeArr.includes('DOOMBOTS')) {
         const doomBotsItems = [
-          "Demon King's Crown",
-          "Gambler's Blade",
+          'Crown of the Shattered Queen',
           "Hextech Gunblade",
-          'Zephyr'
+          'Cruelty',
+          'Sword of Blossoming Dawn',
+          'Sword of the Divine',
+          "Atma's Reckoning",
+          'Zephyr',
+          'Flesheater',
+          'Gargoyle Stoneplate',
+          'Cloak of Starry Night',
+          'Shield of Molten Stone'
+
+          // "Demon King's Crown",
+          // "Gambler's Blade",
         ];
         return modes.includes('DOOMBOTS') || item.prismatic === true || doomBotsItems.includes(item.name);
       }

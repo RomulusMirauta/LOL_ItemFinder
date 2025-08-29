@@ -263,45 +263,62 @@ const Filters: React.FC<FiltersProps> = ({ filterState, setFilterState }) => {
       </div>
       <div className="filters-section">
         <strong>Type</strong>
-         {/* ITEM_TYPES.filter(type => type !== 'Champion-Specific').map((type, idx, arr) =>  */}
-        { ITEM_TYPES.filter(type => type !== 'Champion-Specific').map((type) => {
-          // Insert separator after Legendary
-          const separator =
-            type === 'Legendary' ? (
-              <hr style={{ border: 'none', borderTop: '1px solid #444', margin: '8px 0' }} />
-            ) : null;
-          return (
-            <React.Fragment key={type}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-                <label className="custom-include-checkbox">
-                  <input
-                    type="checkbox"
-                    checked={filterState.type.includes(type)}
-                    onChange={() => handleChange('type', type)}
-                    disabled={filterState.excludeType.includes(type)}
-                    style={filterState.excludeType.includes(type) ? { cursor: 'not-allowed', opacity: 0.5 } : {}}
-                  />
-                  <span className="custom-include-checkmark">{filterState.type.includes(type) ? '✓' : ''}</span>
-                </label>
-                <label className="custom-exclude-checkbox" style={{marginLeft: '8px'}}>
-                  <input
-                    type="checkbox"
-                    checked={filterState.excludeType.includes(type)}
-                    onChange={() => handleChange('excludeType', type)}
-                    disabled={filterState.type.includes(type)}
-                    style={filterState.type.includes(type) ? { cursor: 'not-allowed', opacity: 0.5 } : {}}
-                  />
-                  <span className="custom-exclude-checkmark">{filterState.excludeType.includes(type) ? '✗' : ''}</span>
-                </label>
-                <span style={{marginLeft: '10px'}}>{type}</span>
-              </div>
-              {separator}
-            </React.Fragment>
-          );
-        })}
+        {['Starter', 'Consumable', 'Ward', 'Boots'].map(type => (
+          <div key={type} style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+            <label className="custom-include-checkbox">
+              <input
+                type="checkbox"
+                checked={filterState.type.includes(type)}
+                onChange={() => handleChange('type', type)}
+                disabled={filterState.excludeType.includes(type)}
+                style={filterState.excludeType.includes(type) ? { cursor: 'not-allowed', opacity: 0.5 } : {}}
+              />
+              <span className="custom-include-checkmark">{filterState.type.includes(type) ? '✓' : ''}</span>
+            </label>
+            <label className="custom-exclude-checkbox" style={{marginLeft: '8px'}}>
+              <input
+                type="checkbox"
+                checked={filterState.excludeType.includes(type)}
+                onChange={() => handleChange('excludeType', type)}
+                disabled={filterState.type.includes(type)}
+                style={filterState.type.includes(type) ? { cursor: 'not-allowed', opacity: 0.5 } : {}}
+              />
+              <span className="custom-exclude-checkmark">{filterState.excludeType.includes(type) ? '✗' : ''}</span>
+            </label>
+            <span style={{marginLeft: '10px'}}>{type}</span>
+          </div>
+        ))}
       </div>
+      <div className="filters-section">
+        <strong>Rarity</strong>
+        {['Unique', 'Basic', 'Epic', 'Legendary'].map(type => (
+          <div key={type} style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+            <label className="custom-include-checkbox">
+              <input
+                type="checkbox"
+                checked={filterState.type.includes(type)}
+                onChange={() => handleChange('type', type)}
+                disabled={filterState.excludeType.includes(type)}
+                style={filterState.excludeType.includes(type) ? { cursor: 'not-allowed', opacity: 0.5 } : {}}
+              />
+              <span className="custom-include-checkmark">{filterState.type.includes(type) ? '✓' : ''}</span>
+            </label>
+            <label className="custom-exclude-checkbox" style={{marginLeft: '8px'}}>
+              <input
+                type="checkbox"
+                checked={filterState.excludeType.includes(type)}
+                onChange={() => handleChange('excludeType', type)}
+                disabled={filterState.type.includes(type)}
+                style={filterState.type.includes(type) ? { cursor: 'not-allowed', opacity: 0.5 } : {}}
+              />
+              <span className="custom-exclude-checkmark">{filterState.excludeType.includes(type) ? '✗' : ''}</span>
+            </label>
+            <span style={{marginLeft: '10px'}}>{type}</span>
+          </div>
+        ))}
+      </div>
+      {/*
       <div className="filters-section filters-section-last">
-        {/* <strong>Class</strong> */}
         <strong>Role</strong>
         {ITEM_CLASSES.map(cls => (
           <div key={cls} style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
@@ -329,6 +346,7 @@ const Filters: React.FC<FiltersProps> = ({ filterState, setFilterState }) => {
           </div>
         ))}
       </div>
+      */}
     </div>
   );
 };
