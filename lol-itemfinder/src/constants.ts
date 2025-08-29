@@ -30,7 +30,9 @@ export const ITEM_STATS = [
   // 'Life Steal (AA & Spells)',
   'Life Steal & Omnivamp',
   'Tenacity *',
-  'Active *'
+  'Active *',
+  'Anti-Heal *',
+  'Anti-Shield *'
 ];
 export const ITEM_CLASSES = [
   'Fighter', 

@@ -130,8 +130,8 @@ export function filterBySidebar(
   }
   const statArr = filterState.stat;
   const tenacityChecked = statArr.map(s => s.toLowerCase()).includes('tenacity *');
-  const antiHealChecked = statArr.includes('Anti-Heal');
-  const antiShieldChecked = statArr.includes('Anti-Shield');
+  const antiHealChecked = statArr.includes('Anti-Heal *');
+  const antiShieldChecked = statArr.includes('Anti-Shield *');
   if (statArr.length > 0) {
     filtered = filtered.filter(item => {
       if (tenacityChecked) {

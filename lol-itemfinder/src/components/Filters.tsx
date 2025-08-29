@@ -222,7 +222,7 @@ const Filters: React.FC<FiltersProps> = ({ filterState, setFilterState }) => {
         </div>
       </div>
       <div className="filters-section">
-        <strong>Stat</strong>
+        <strong>Stat / Effect</strong>
         {ITEM_STATS.map((stat, idx) => {
           // Insert separators at the specified indices
           // Separator above Ability Haste (index 12)
@@ -259,54 +259,7 @@ const Filters: React.FC<FiltersProps> = ({ filterState, setFilterState }) => {
               </div>
             </React.Fragment>
           );
-        })}
-        {/* Custom filters after Active */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginTop: '8px' }}>
-          <label className="custom-include-checkbox">
-            <input
-              type="checkbox"
-              checked={filterState.stat.includes('Anti-Heal')}
-              onChange={() => handleChange('stat', 'Anti-Heal')}
-              disabled={filterState.excludeStat.includes('Anti-Heal')}
-              style={filterState.excludeStat.includes('Anti-Heal') ? { cursor: 'not-allowed', opacity: 0.5 } : {}}
-            />
-            <span className="custom-include-checkmark">{filterState.stat.includes('Anti-Heal') ? '✓' : ''}</span>
-          </label>
-          <label className="custom-exclude-checkbox" style={{marginLeft: '8px'}}>
-            <input
-              type="checkbox"
-              checked={filterState.excludeStat.includes('Anti-Heal')}
-              onChange={() => handleChange('excludeStat', 'Anti-Heal')}
-              disabled={filterState.stat.includes('Anti-Heal')}
-              style={filterState.stat.includes('Anti-Heal') ? { cursor: 'not-allowed', opacity: 0.5 } : {}}
-            />
-            <span className="custom-exclude-checkmark">{filterState.excludeStat.includes('Anti-Heal') ? '✗' : ''}</span>
-          </label>
-          <span style={{marginLeft: '10px'}}>Anti-Heal</span>
-        </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginTop: '8px' }}>
-          <label className="custom-include-checkbox">
-            <input
-              type="checkbox"
-              checked={filterState.stat.includes('Anti-Shield')}
-              onChange={() => handleChange('stat', 'Anti-Shield')}
-              disabled={filterState.excludeStat.includes('Anti-Shield')}
-              style={filterState.excludeStat.includes('Anti-Shield') ? { cursor: 'not-allowed', opacity: 0.5 } : {}}
-            />
-            <span className="custom-include-checkmark">{filterState.stat.includes('Anti-Shield') ? '✓' : ''}</span>
-          </label>
-          <label className="custom-exclude-checkbox" style={{marginLeft: '8px'}}>
-            <input
-              type="checkbox"
-              checked={filterState.excludeStat.includes('Anti-Shield')}
-              onChange={() => handleChange('excludeStat', 'Anti-Shield')}
-              disabled={filterState.stat.includes('Anti-Shield')}
-              style={filterState.stat.includes('Anti-Shield') ? { cursor: 'not-allowed', opacity: 0.5 } : {}}
-            />
-            <span className="custom-exclude-checkmark">{filterState.excludeStat.includes('Anti-Shield') ? '✗' : ''}</span>
-          </label>
-          <span style={{marginLeft: '10px'}}>Anti-Shield</span>
-        </div>
+        })}        
       </div>
       <div className="filters-section">
         <strong>Type</strong>
