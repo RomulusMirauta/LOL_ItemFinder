@@ -1,6 +1,8 @@
 import React from 'react';
 import type { FilterState, FiltersProps } from '../types/types';
-import { ITEM_TYPES, ITEM_STATS, ITEM_CLASSES } from '../constants';
+// import { ITEM_TYPES, ITEM_STATS, ITEM_CLASSES } from '../constants';
+import { ITEM_STATS } from '../constants';
+
 
 const MAPS = [
   { id: '11', name: "Summoner's Rift" },

@@ -9,6 +9,7 @@ export const ITEM_TYPES = [
   'Consumable', 
   'Ward',
   'Boots', 
+  'Purchasable',
   'Champion-Specific'
 ];
 export const ITEM_STATS = [
@@ -31,6 +32,7 @@ export const ITEM_STATS = [
   'Life Steal & Omnivamp',
   'Tenacity *',
   'Active *',
+  'Shield *',
   'Anti-Heal *',
   'Anti-Shield *'
 ];

@@ -132,6 +132,7 @@ export function filterBySidebar(
   const tenacityChecked = statArr.map(s => s.toLowerCase()).includes('tenacity *');
   const antiHealChecked = statArr.includes('Anti-Heal *');
   const antiShieldChecked = statArr.includes('Anti-Shield *');
+  // const shieldChecked = statArr.includes('Shield');
   if (statArr.length > 0) {
     filtered = filtered.filter(item => {
       if (tenacityChecked) {
@@ -197,6 +198,38 @@ export function filterBySidebar(
         ];
         return antiShieldKeywords.some(keyword =>
           textFields.some(field => field.includes(keyword))
+        );
+      }
+      // Shield filter implementation
+      // if (shieldChecked) {
+      if (statArr.includes('shield') || statArr.includes('Shield *')) {
+        const textFields = [item.name || item.plaintext || '', item.description, ...(item.tags || [])].map(f => f.toLowerCase());
+        const shieldKeywords = [
+          'grants a shield',
+          'granting a shield',
+          'small shield',
+          'gain shield',
+          'grant shield',
+          'gain a shield',
+          'damage shield',
+          'spell shield',
+          'physical shield',
+          'magic shield',
+          'shield that decays',
+          'grant you or your targeted ally a shield',
+          'grants you a shield',
+          'magic damage shield',
+          'decaying shield',
+          'lifeline',
+          'convert excess healing from your lifesteal to a shield'
+        ];
+        // const isNotShield = textFields.some(field => field.includes('Move faster while attacking enemies and gain a shield when on low health.'));
+        const isNotShield = ['Move faster while attacking enemies and gain a shield when on low health.'];
+        // return shieldKeywords.some(keyword =>
+        //   textFields.some(field => field.includes(keyword))
+        // );
+        return shieldKeywords.some(keyword =>
+          textFields.some(field => field.includes(keyword)) && !isNotShield.some(notShield => textFields.some (field => field.includes(notShield)))
         );
       }
       // Special rule: On-Hit Effects filter
