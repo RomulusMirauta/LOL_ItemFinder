@@ -130,12 +130,73 @@ export function filterBySidebar(
   }
   const statArr = filterState.stat;
   const tenacityChecked = statArr.map(s => s.toLowerCase()).includes('tenacity *');
+  const antiHealChecked = statArr.includes('Anti-Heal');
+  const antiShieldChecked = statArr.includes('Anti-Shield');
   if (statArr.length > 0) {
     filtered = filtered.filter(item => {
       if (tenacityChecked) {
         const textFields = [item.name, item.plaintext || '', item.description, ...(item.tags || [])].map(f => f.toLowerCase());
         return tenacityPhrases.some(phrase =>
           textFields.some(field => field.includes(phrase))
+        );
+      }
+      // Anti-Heal filter implementation
+      if (antiHealChecked) {
+        const textFields = [item.name, item.plaintext || '', item.description, ...(item.tags || [])].map(f => f.toLowerCase());
+        // Common anti-heal keywords
+        const antiHealKeywords = [
+          'grievous wounds',
+          'anti-heal',
+          'healing reduction',
+          'reduces healing',
+          'reduce healing',
+          'inflict grievous wounds',
+          'applies grievous wounds',
+          'applies anti-heal',
+          'reduce the effectiveness of healing',
+          'reducing healing',
+          'heal reduction',
+          'healing is reduced',
+          'heal is reduced',
+          'heal is less effective',
+          'less healing',
+          'reduced healing',
+        ];
+        return antiHealKeywords.some(keyword =>
+          textFields.some(field => field.includes(keyword))
+        );
+      }
+      // Anti-Shield filter implementation
+      if (antiShieldChecked) {
+        const textFields = [item.name, item.plaintext || '', item.description, ...(item.tags || [])].map(f => f.toLowerCase());
+        // Common anti-shield keywords
+        const antiShieldKeywords = [
+          'anti-shield',
+          'shield reduction',
+          'reduces shields',
+          'reduce shield',
+          'shield is reduced',
+          'shield is less effective',
+          'less shield',
+          'reduced shield',
+          'shield breaker',
+          'breaks shield',
+          'break shield',
+          'shield destruction',
+          'destroy shield',
+          'destroy shields',
+          'shield is destroyed',
+          'removes shield',
+          'removes shields',
+          'removes enemy shield',
+          'removes target shield',
+          'removes target shields',
+          'removes all shields',
+          'removes all enemy shields',
+          'removes all target shields',
+        ];
+        return antiShieldKeywords.some(keyword =>
+          textFields.some(field => field.includes(keyword))
         );
       }
       // Special rule: On-Hit Effects filter
