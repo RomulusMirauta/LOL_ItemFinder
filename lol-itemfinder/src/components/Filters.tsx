@@ -228,10 +228,10 @@ const Filters: React.FC<FiltersProps> = ({ filterState, setFilterState }) => {
         {ITEM_STATS.map((stat, idx) => {
           // Insert separators at the specified indices
           // Separator above Ability Haste (index 12)
-          const separatorIndices = [6, 9, 12, 15];
+          const separatorIndices = [6, 9, 12, 15, 19];
           const separator =
             separatorIndices.includes(idx) ? (
-              <hr style={{ border: 'none', borderTop: '1px solid #444', margin: '8px 0' }} />
+              <hr style={{ border: 'none', borderTop: '1px solid #444', margin: '8px 0px' }} />
             ) : null;
           return (
             <React.Fragment key={stat}>

@@ -32,9 +32,14 @@ export const ITEM_STATS = [
   'Life Steal & Omnivamp',
   'Tenacity *',
   'Active *',
-  'Shield *',
   'Anti-Heal *',
-  'Anti-Shield *'
+  'Anti-Shield *',
+  
+  'All Shield Types *',
+  'Omni-Shield *',
+  'Physical Damage Shield *',
+  'Magic Damage Shield *',
+  'Spell Shield *'
 ];
 export const ITEM_CLASSES = [
   'Fighter', 

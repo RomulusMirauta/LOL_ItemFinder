@@ -21,13 +21,17 @@ function App() {
   }, []);
   // Filters state - set default enabled filters
   const [filterState, setFilterState] = useState<FilterState>({
-    purchasableInclude: ['yes'],
+    purchasableInclude: [],
+    // purchasableInclude: ['yes'], // => this will be enabled by default
     purchasableExclude: [],
-    mapInclude: ['11'],
-    mapExclude: ['12'],
+    mapInclude: [],
+    // mapInclude: ['11'],
+    mapExclude: [],
+    // mapExclude: ['12'],
     type: [],
-    excludeType: ['Champion-Specific'], // <-- enabled by default
-    stat: [],
+    excludeType: [], 
+    // excludeType: ['Champion-Specific'],
+    stat: [''],
     excludeStat: [],
     class: [],
     excludeClass: [],

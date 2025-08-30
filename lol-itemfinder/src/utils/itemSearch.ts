@@ -202,35 +202,163 @@ export function filterBySidebar(
       }
       // Shield filter implementation
       // if (shieldChecked) {
-      if (statArr.includes('shield') || statArr.includes('Shield *')) {
-        const textFields = [item.name || item.plaintext || '', item.description, ...(item.tags || [])].map(f => f.toLowerCase());
+      if (statArr.includes('All Shield Types *')) {
+        // const textFields = [item.name || item.plaintext || '', item.description, ...(item.tags || [])].map(f => f.toLowerCase());
+        const textFields = [item.name || '', item.description].map(f => f.toLowerCase());
         const shieldKeywords = [
-          'grants a shield',
-          'granting a shield',
-          'small shield',
-          'gain shield',
-          'grant shield',
-          'gain a shield',
-          'damage shield',
+          // 'grants a shield',
+          // ' that regenerates after killing large monsters or out of combat',
+          // '<shield>',
+          // '</shield>',
+          '<shield>200 - 360 Shield</shield>',
+          // 'Shield</shield>',
+          '<shield>shield</shield>',
+          '<shield> shield</shield>',
+          '<shield>magic shield</shield>',
+          '<shield>physical shield</shield>',
+          '<shield>decaying shield</shield>',
+          '<shield>magic damage shield</shield>',
+          '<shield></shield>',
+          'granting a shield', // Deep Freeze
+          'small shield', // Lover's Ricochet
+          // 'gain shield',
+          // 'grant shield',
+          // 'gain a shield',
+          // 'if you are struck by the lightning, gain a ', // Lightning Rod
+          // 'damage shield',
           'spell shield',
           'physical shield',
           'magic shield',
-          'shield that decays',
+          'shield that decays', // Gargoyle Stoneplate
+          'that decays over 2.5 seconds.', // Locket of the Iron Solari
           'grant you or your targeted ally a shield',
           'grants you a shield',
           'magic damage shield',
           'decaying shield',
-          'lifeline',
-          'convert excess healing from your lifesteal to a shield'
-        ];
+          // 'lifeline',
+          // 'convert excess healing from your lifesteal to a shield', // Bloodthirster
+          // ' a champion, gain a ' // Armored Advance, Chainlaced Crushers
+        ].map(k => k.toLowerCase());
+        const matchesShieldKeywords = shieldKeywords.some(keyword => 
+          textFields.some(field => field.includes(keyword)));
         // const isNotShield = textFields.some(field => field.includes('Move faster while attacking enemies and gain a shield when on low health.'));
-        const isNotShield = ['Move faster while attacking enemies and gain a shield when on low health.'];
+        // const isNotShield = [
+          // 'Move faster while attacking enemies and gain a shield when on low health.', // Phantom Dancer
+          // 'soul anchor' // Lifeline
+        // ];
+        // const matchesIsNotShield = isNotShield.some(keyword =>
+        //   (item.description || '').toLowerCase().includes(keyword.toLowerCase()));
+        // const separatePhysicalShield = ['physical', 'shield'];
+        // const separateMatchPhysicalShield = textFields.some(field => field.includes('physical') && field.includes('shield'));
+        // const matchesSeparatePhysicalShield = separatePhysicalShield.every(keyword => (item.description || '').toLowerCase().includes(keyword.toLowerCase()));
+        // const matchesSeparatePhysicalShield = (item.description || '').toLowerCase().includes('physical shield');
+        // const matchesSeparatePhysicalShield = textFields.some(field => field.includes('physical shield'));
+        // const separateMagicShield = ['magic', 'shield'];
+        // const separateMatchMagicShield = textFields.some(field => field.includes('magic') && field.includes('shield'));
+        // const matchesSeparateMagicShield = separateMagicShield.every(keyword => (item.description || '').toLowerCase().includes(keyword.toLowerCase()));
+        // const isExplicitlyIncluded = [
+          // 'Armored Advance',
+          // 'Spirit Visage'
+        // ].includes(item.name);
+        // const itemsToBeExcluded = ['Ardent Censer', 'Staff of Flowing Water', 'Spirit Visage'];
+        // const matchesItemsToBeExcluded = itemsToBeExcluded.some(keyword =>
+          // (item.name || '').toLowerCase().includes(keyword.toLowerCase()));
         // return shieldKeywords.some(keyword =>
         //   textFields.some(field => field.includes(keyword))
         // );
-        return shieldKeywords.some(keyword =>
-          textFields.some(field => field.includes(keyword)) && !isNotShield.some(notShield => textFields.some (field => field.includes(notShield)))
+        // return shieldKeywords.some(keyword =>
+        //   textFields.some(field => field.includes(keyword)) && 
+        //     !isNotShield.some(notShield => 
+        //       textFields.some(field => field.includes(notShield)))
+        // );
+        // return shieldKeywords.some(keyword =>
+        //   textFields.some(field => field.includes(keyword)) && 
+        //   !isNotShield.some(notShield => 
+        //     textFields.some(field => field.includes(notShield))) ||
+        //     separatePhysicalShield || separateMagicShield && !matchesExclude
+        // );
+        return matchesShieldKeywords
+      }
+      // Omni-Shield * filter implementation
+      if (statArr.includes('Omni-Shield *')) {
+        // First, get all items that match All Shield Types *
+        // const textFields = [item.name || item.plaintext || '', item.description, ...(item.tags || [])].map(f => f.toLowerCase());
+        const textFields = [item.name || item.plaintext || '', item.description].map(f => f.toLowerCase());
+        const shieldKeywords = [
+          '<shield>shield</shield>',
+          '<shield> shield</shield>',
+          // '<shield>magic shield</shield>',
+          // '<shield>physical shield</shield>',
+          '<shield>decaying shield</shield>',
+          // '<shield>magic damage shield</shield>',
+          '<shield></shield>',
+          'granting a shield', // Deep Freeze
+          'small shield', // Lover's Ricochet
+          // 'spell shield',
+          'shield that decays', // Gargoyle Stoneplate
+          'that decays over 2.5 seconds.', // Locket of the Iron Solari
+          'grant you or your targeted ally a shield',
+          'grants you a shield',
+          // 'magic damage shield',
+          'decaying shield',
+          // 'lifeline',
+        ].map(k => k.toLowerCase());
+        const matchesShieldKeywords = shieldKeywords.some(keyword =>
+          textFields.some(field => field.includes(keyword))
         );
+        // const excludeKeywords = [
+        //   'magic damage shield',
+        //   'spell shield',
+        //   'magic shield',
+        //   'soul anchor',
+        //   '<shield>magic shield</shield>',
+        //   '<shield>physical shield</shield>',
+        //   '<shield>magic damage shield</shield>'
+        // ];
+        // const matchesExclude = excludeKeywords.some(keyword =>
+        //   textFields.some(field => field.includes(keyword))
+        // );
+        // return matchesShieldKeywords && !matchesExclude;
+        return matchesShieldKeywords
+      }
+      // Physical Damage Shield * filter implementation
+      if (statArr.includes('Physical Damage Shield *')) {
+        // Get all items that match All Shield Types * and also have 'physical shield'
+        const textFields = [item.name || item.plaintext || '', item.description, ...(item.tags || [])].map(f => f.toLowerCase());
+        const shieldKeywords = [
+          '<shield></shield> <physicalDamage>physical</physicalDamage> <shield>shield</shield>'
+        ].map(k => k.toLowerCase());
+        const matchesShieldKeywords = shieldKeywords.some(keyword =>
+          textFields.some(field => field.includes(keyword))
+        );
+        // const matchesPhysical = textFields.some(field => field.includes('physical shield'));
+        // const matchesPhysical = textFields.some(field => field.includes('physical') && field.includes('shield'));
+        // return matchesShield && matchesPhysical;
+        return matchesShieldKeywords;
+      }
+      if (statArr.includes('Magic Damage Shield *')) {
+        const textFields = [item.name || item.plaintext || '', item.description, ...(item.tags || [])].map(f => f.toLowerCase());
+        const shieldKeywords = [
+          '<shield></shield> <magicDamage>magic</magicDamage> <shield>shield</shield>',
+          '<shield>magic shield</shield>',
+          '<shield>magic damage shield</shield>',
+          // 'spell shield',
+          'magic damage shield'
+        ].map(k => k.toLowerCase());
+        const matchesShieldKeywords = shieldKeywords.some(keyword =>
+          textFields.some(field => field.includes(keyword))
+        );
+        return matchesShieldKeywords;
+      }
+      if (statArr.includes('Spell Shield *')) {
+        const textFields = [item.name || item.plaintext || '', item.description, ...(item.tags || [])].map(f => f.toLowerCase());
+        const shieldKeywords = [
+          'spell shield'
+        ].map(k => k.toLowerCase());
+        const matchesShieldKeywords = shieldKeywords.some(keyword =>
+          textFields.some(field => field.includes(keyword))
+        );
+        return matchesShieldKeywords;
       }
       // Special rule: On-Hit Effects filter
       if (statArr.includes('On-Hit Effects')) {
