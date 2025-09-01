@@ -11,6 +11,7 @@ import {
   // ITEM_CLASSES 
 } from '../constants';
 
+
 const Filters: React.FC<FiltersProps> = ({ filterState, setFilterState }) => {
   // More type-safe helper function for array properties
   function getArrayFromFilterState<K extends keyof FilterState>(key: K): string[] {
@@ -48,19 +49,18 @@ const Filters: React.FC<FiltersProps> = ({ filterState, setFilterState }) => {
 
   // Handler to clear all filters
   function handleClearFilters() {
-    setFilterState({
-      purchasableInclude: [],
-      purchasableExclude: [],
-      mapInclude: [],
-      mapExclude: [],
-      type: [],
-      excludeType: [],
-      stat: [],
-      excludeStat: [],
-      class: [],
-      excludeClass: [],
-      gameModeInclude: [],
-      gameModeExclude: [],
+    // Dynamically clear all include/exclude arrays for all filter categories
+    setFilterState(prev => {
+      const cleared: Partial<FilterState> = {};
+      // Get all filter keys from FilterState type
+      const keys = Object.keys(prev) as (keyof FilterState)[];
+      for (const key of keys) {
+        // Only clear array properties
+        if (Array.isArray(prev[key])) {
+          cleared[key] = [];
+        }
+      }
+      return { ...prev, ...cleared } as FilterState;
     });
   }
 
@@ -89,62 +89,56 @@ const Filters: React.FC<FiltersProps> = ({ filterState, setFilterState }) => {
       {/* Misc Section */}
       <div className="filters-section">
         <strong>Misc</strong>
-        {/* Purchasable filter: include/exclude only for 'Purchasable' */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-          <label className="custom-include-checkbox">
-            <input
-              type="checkbox"
-              checked={filterState.purchasableInclude.includes('yes')}
-              onChange={() => handleChange('purchasableInclude', 'yes')}
-              disabled={filterState.purchasableExclude.includes('yes')}
-              style={filterState.purchasableExclude.includes('yes') ? { cursor: 'not-allowed', opacity: 0.5 } : {}}
-            />
-            <span className="custom-include-checkmark">
-              {filterState.purchasableInclude.includes('yes') ? '✓' : ''}
-            </span>
-          </label>
-          <label className="custom-exclude-checkbox" style={{ marginLeft: '8px' }}>
-            <input
-              type="checkbox"
-              checked={filterState.purchasableExclude.includes('yes')}
-              onChange={() => handleChange('purchasableExclude', 'yes')}
-              disabled={filterState.purchasableInclude.includes('yes')}
-              style={filterState.purchasableInclude.includes('yes') ? { cursor: 'not-allowed', opacity: 0.5 } : {}}
-            />
-            <span className="custom-exclude-checkmark">
-              {filterState.purchasableExclude.includes('yes') ? '✗' : ''}
-            </span>
-          </label>
-          <span style={{ marginLeft: '10px' }}>Purchasable</span>
-        </div>
-        {/* Champion-Specific filter: include/exclude for 'Champion-Specific' */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginTop: '10px' }}>
-          <label className="custom-include-checkbox">
-            <input
-              type="checkbox"
-              checked={filterState.type.includes('Champion-Specific')}
-              onChange={() => handleChange('type', 'Champion-Specific')}
-              disabled={filterState.excludeType.includes('Champion-Specific')}
-              style={filterState.excludeType.includes('Champion-Specific') ? { cursor: 'not-allowed', opacity: 0.5 } : {}}
-            />
-            <span className="custom-include-checkmark">
-              {filterState.type.includes('Champion-Specific') ? '✓' : ''}
-            </span>
-          </label>
-          <label className="custom-exclude-checkbox" style={{ marginLeft: '8px' }}>
-            <input
-              type="checkbox"
-              checked={filterState.excludeType.includes('Champion-Specific')}
-              onChange={() => handleChange('excludeType', 'Champion-Specific')}
-              disabled={filterState.type.includes('Champion-Specific')}
-              style={filterState.type.includes('Champion-Specific') ? { cursor: 'not-allowed', opacity: 0.5 } : {}}
-            />
-            <span className="custom-exclude-checkmark">
-              {filterState.excludeType.includes('Champion-Specific') ? '✗' : ''}
-            </span>
-          </label>
-          <span style={{ marginLeft: '10px' }}>Champion-Specific</span>
-        </div>
+        {/* Dynamically render misc filters using ITEM_MISC */}
+        {ITEM_MISC.map(mode => (
+          <div key={mode} style={{ display: 'flex', alignItems: 'center', gap: '14px'}}>
+            <label className="custom-include-checkbox">
+              <input
+                type="checkbox"
+                checked={mode === 'Purchasable'
+                  ? filterState.purchasableInclude.includes('yes')
+                  : filterState.type.includes(mode)}
+                onChange={() => mode === 'Purchasable'
+                  ? handleChange('purchasableInclude', 'yes')
+                  : handleChange('type', mode)}
+                disabled={mode === 'Purchasable'
+                  ? filterState.purchasableExclude.includes('yes')
+                  : filterState.excludeType.includes(mode)}
+                style={mode === 'Purchasable'
+                  ? (filterState.purchasableExclude.includes('yes') ? { cursor: 'not-allowed', opacity: 0.5 } : {})
+                  : (filterState.excludeType.includes(mode) ? { cursor: 'not-allowed', opacity: 0.5 } : {})}
+              />
+              <span className="custom-include-checkmark">
+                {mode === 'Purchasable'
+                  ? (filterState.purchasableInclude.includes('yes') ? '✓' : '')
+                  : (filterState.type.includes(mode) ? '✓' : '')}
+              </span>
+            </label>
+            <label className="custom-exclude-checkbox" style={{ marginLeft: '8px' }}>
+              <input
+                type="checkbox"
+                checked={mode === 'Purchasable'
+                  ? filterState.purchasableExclude.includes('yes')
+                  : filterState.excludeType.includes(mode)}
+                onChange={() => mode === 'Purchasable'
+                  ? handleChange('purchasableExclude', 'yes')
+                  : handleChange('excludeType', mode)}
+                disabled={mode === 'Purchasable'
+                  ? filterState.purchasableInclude.includes('yes')
+                  : filterState.type.includes(mode)}
+                style={mode === 'Purchasable'
+                  ? (filterState.purchasableInclude.includes('yes') ? { cursor: 'not-allowed', opacity: 0.5 } : {})
+                  : (filterState.type.includes(mode) ? { cursor: 'not-allowed', opacity: 0.5 } : {})}
+              />
+              <span className="custom-exclude-checkmark">
+                {mode === 'Purchasable'
+                  ? (filterState.purchasableExclude.includes('yes') ? '✗' : '')
+                  : (filterState.excludeType.includes(mode) ? '✗' : '')}
+              </span>
+            </label>
+            <span style={{ marginLeft: '10px' }}>{mode}</span>
+          </div>
+        ))}
       </div>
       {/* Map Section */}
       <div className="filters-section">

@@ -87,7 +87,8 @@ export const ITEM_RARITY = [
   // 'Generic', 
   'Epic', 
   'Legendary', 
-  // 'Mythic'
+  'Mythic',
+  'Prismatic' 
 ];
 
 export const ITEM_CLASSES = [

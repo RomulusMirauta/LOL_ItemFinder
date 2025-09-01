@@ -2,6 +2,16 @@ import type { FilterState } from '../types/types';
 import type { Item } from '../types/item';
 import { tenacityPhrases } from './itemConstants';
 import { filterByAttackDamage } from './itemFilters';
+import { 
+  ITEM_MISC, 
+  // MAPS, 
+  // GAME_MODES, 
+  // ITEM_STAT_EFFECT, 
+  // ITEM_TYPE, 
+  // ITEM_RARITY, 
+  // ITEM_CLASSES 
+} from '../constants';
+
 
 // Apply only sidebar filters (no search)
 export function filterBySidebar(
@@ -46,8 +56,19 @@ export function filterBySidebar(
     });
   }
   const typeArr = filterState.type;
+  // Misc filters implementation (dynamic)
+  ITEM_MISC.forEach(misc => {
+    if (misc === 'Purchasable' && typeArr.includes(misc)) {
+      // Already handled above
+      return;
+    }
+    if (misc === 'Champion-Specific' && typeArr.includes(misc)) {
+      filtered = filtered.filter(item => !!item.requiredChampion);
+    }
+    // Add more misc filters here if needed
+  });
   // Rarity filters
-  const rarityArr = typeArr.filter(type => ['Unique', 'Basic', 'Epic', 'Legendary'].includes(type));
+  const rarityArr = typeArr.filter(type => ['Unique', 'Basic', 'Epic', 'Legendary', 'Prismatic'].includes(type));
   if (rarityArr.length > 0) {
     filtered = filtered.filter(item => {
       return rarityArr.some(rarity => {
@@ -80,6 +101,27 @@ export function filterBySidebar(
             desc.includes('<raritylegendary>') ||
             desc.includes('legendary') ||
             item.name.toLowerCase().includes('legendary')
+          );
+        }
+        if (rarity === 'Prismatic') {
+          const doomBotsItems = [
+            'Crown of the Shattered Queen',
+            "Hextech Gunblade",
+            'Cruelty',
+            'Sword of Blossoming Dawn',
+            'Sword of the Divine',
+            "Atma's Reckoning",
+            'Zephyr',
+            'Flesheater',
+            'Gargoyle Stoneplate',
+            'Cloak of Starry Night',
+            'Shield of Molten Stone'
+          ];
+          return (
+            item.prismatic === true ||
+            item.name.toLowerCase().includes('prismatic') ||
+            item.description.toLowerCase().includes('prismatic') ||
+            doomBotsItems.map(i => i.toLowerCase()).includes(item.name.toLowerCase())
           );
         }
         return false;
@@ -510,6 +552,9 @@ export function filterBySidebar(
   const excludeTypeArr = filterState.excludeType;
   if (excludeTypeArr.length > 0) {
     filtered = filtered.filter(item => {
+      if (excludeTypeArr.includes('Prismatic')) {
+        if (item.prismatic === true) return false;
+      }
       if (excludeTypeArr.includes('Champion-Specific')) {
         if (!!item.requiredChampion) return false;
       }
