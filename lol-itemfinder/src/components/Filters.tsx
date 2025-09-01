@@ -1,24 +1,15 @@
 import React from 'react';
 import type { FilterState, FiltersProps } from '../types/types';
-// import { ITEM_TYPES, ITEM_STATS, ITEM_CLASSES } from '../constants';
-import { ITEM_STATS } from '../constants';
-
-
-const MAPS = [
-  { id: '11', name: "Summoner's Rift" },
-  { id: '12', name: 'Howling Abyss' },
-];
-
-const GAME_MODES = [
-  // { id: 'CLASSIC', name: 'Classic' },
-  // { id: 'ARAM', name: 'ARAM' },
-  // { id: 'URF', name: 'URF (Ultra Rapid Fire)' },
-  { id: 'DOOMBOTS', name: 'Doom Bots' }, // <-- Added Doom Bots
-  { id: 'ARENA', name: 'Arena' },
-  // { id: 'TEAMFIGHTTACTICS', name: 'Teamfight Tactics' },
-];
-
 import '../styles/Filters.css';
+import { 
+  ITEM_MISC, 
+  MAPS, 
+  GAME_MODES, 
+  ITEM_STAT_EFFECT, 
+  ITEM_TYPE, 
+  ITEM_RARITY, 
+  // ITEM_CLASSES 
+} from '../constants';
 
 const Filters: React.FC<FiltersProps> = ({ filterState, setFilterState }) => {
   // More type-safe helper function for array properties
@@ -92,14 +83,13 @@ const Filters: React.FC<FiltersProps> = ({ filterState, setFilterState }) => {
           zIndex: 2,
         }}
       >
-        {/* Clear All Filters */}
         Clear
       </button>
       <h2 className="filters-title">Filters</h2>
-      {/* <h2 className="filters-title">FILTERS</h2> */}
+      {/* Misc Section */}
       <div className="filters-section">
-        {/* <strong>Miscellaneous</strong> */}
         <strong>Misc</strong>
+        {/* Purchasable filter: include/exclude only for 'Purchasable' */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
           <label className="custom-include-checkbox">
             <input
@@ -127,6 +117,7 @@ const Filters: React.FC<FiltersProps> = ({ filterState, setFilterState }) => {
           </label>
           <span style={{ marginLeft: '10px' }}>Purchasable</span>
         </div>
+        {/* Champion-Specific filter: include/exclude for 'Champion-Specific' */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginTop: '10px' }}>
           <label className="custom-include-checkbox">
             <input
@@ -155,6 +146,7 @@ const Filters: React.FC<FiltersProps> = ({ filterState, setFilterState }) => {
           <span style={{ marginLeft: '10px' }}>Champion-Specific</span>
         </div>
       </div>
+      {/* Map Section */}
       <div className="filters-section">
         <strong>Map</strong>
         <div className="filters-checkbox-group">
@@ -172,7 +164,7 @@ const Filters: React.FC<FiltersProps> = ({ filterState, setFilterState }) => {
                   {filterState.mapInclude.includes(map.id) ? '✓' : ''}
                 </span>
               </label>
-              <label className="custom-exclude-checkbox" style={{marginLeft: '8px'}}>
+              <label className="custom-exclude-checkbox" style={{ marginLeft: '8px' }}>
                 <input
                   type="checkbox"
                   checked={filterState.mapExclude.includes(map.id)}
@@ -184,11 +176,12 @@ const Filters: React.FC<FiltersProps> = ({ filterState, setFilterState }) => {
                   {filterState.mapExclude.includes(map.id) ? '✗' : ''}
                 </span>
               </label>
-              <span className="filters-checkbox-text" style={{marginLeft: '10px'}}>{map.name}</span>
+              <span className="filters-checkbox-text" style={{ marginLeft: '10px' }}>{map.name}</span>
             </div>
           ))}
         </div>
       </div>
+      {/* Game Mode Section */}
       <div className="filters-section">
         <strong>Game Mode</strong>
         <div className="filters-checkbox-group">
@@ -206,7 +199,7 @@ const Filters: React.FC<FiltersProps> = ({ filterState, setFilterState }) => {
                   {filterState.gameModeInclude.includes(mode.id) ? '✓' : ''}
                 </span>
               </label>
-              <label className="custom-exclude-checkbox" style={{marginLeft: '8px'}}>
+              <label className="custom-exclude-checkbox" style={{ marginLeft: '8px' }}>
                 <input
                   type="checkbox"
                   checked={filterState.gameModeExclude.includes(mode.id)}
@@ -218,21 +211,19 @@ const Filters: React.FC<FiltersProps> = ({ filterState, setFilterState }) => {
                   {filterState.gameModeExclude.includes(mode.id) ? '✗' : ''}
                 </span>
               </label>
-              <span className="filters-checkbox-text" style={{marginLeft: '10px'}}>{mode.name}</span>
+              <span className="filters-checkbox-text" style={{ marginLeft: '10px' }}>{mode.name}</span>
             </div>
           ))}
         </div>
       </div>
+      {/* Stat / Effect Section */}
       <div className="filters-section">
         <strong>Stat / Effect</strong>
-        {ITEM_STATS.map((stat, idx) => {
-          // Insert separators at the specified indices
-          // Separator above Ability Haste (index 12)
+        {ITEM_STAT_EFFECT.map((stat, idx) => {
           const separatorIndices = [6, 9, 12, 15, 19];
-          const separator =
-            separatorIndices.includes(idx) ? (
-              <hr style={{ border: 'none', borderTop: '1px solid #444', margin: '8px 0px' }} />
-            ) : null;
+          const separator = separatorIndices.includes(idx) ? (
+            <hr style={{ border: 'none', borderTop: '1px solid #444', margin: '8px 0px' }} />
+          ) : null;
           return (
             <React.Fragment key={stat}>
               {separator}
@@ -247,7 +238,7 @@ const Filters: React.FC<FiltersProps> = ({ filterState, setFilterState }) => {
                   />
                   <span className="custom-include-checkmark">{filterState.stat.includes(stat) ? '✓' : ''}</span>
                 </label>
-                <label className="custom-exclude-checkbox" style={{marginLeft: '8px'}}>
+                <label className="custom-exclude-checkbox" style={{ marginLeft: '8px' }}>
                   <input
                     type="checkbox"
                     checked={filterState.excludeStat.includes(stat)}
@@ -257,15 +248,16 @@ const Filters: React.FC<FiltersProps> = ({ filterState, setFilterState }) => {
                   />
                   <span className="custom-exclude-checkmark">{filterState.excludeStat.includes(stat) ? '✗' : ''}</span>
                 </label>
-                <span style={{marginLeft: '10px'}}>{stat}</span>
+                <span style={{ marginLeft: '10px' }}>{stat}</span>
               </div>
             </React.Fragment>
           );
-        })}        
+        })}
       </div>
+      {/* Type Section */}
       <div className="filters-section">
         <strong>Type</strong>
-        {['Starter', 'Consumable', 'Ward', 'Boots'].map(type => (
+        {ITEM_TYPE.map(type => (
           <div key={type} style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
             <label className="custom-include-checkbox">
               <input
@@ -277,7 +269,7 @@ const Filters: React.FC<FiltersProps> = ({ filterState, setFilterState }) => {
               />
               <span className="custom-include-checkmark">{filterState.type.includes(type) ? '✓' : ''}</span>
             </label>
-            <label className="custom-exclude-checkbox" style={{marginLeft: '8px'}}>
+            <label className="custom-exclude-checkbox" style={{ marginLeft: '8px' }}>
               <input
                 type="checkbox"
                 checked={filterState.excludeType.includes(type)}
@@ -287,13 +279,14 @@ const Filters: React.FC<FiltersProps> = ({ filterState, setFilterState }) => {
               />
               <span className="custom-exclude-checkmark">{filterState.excludeType.includes(type) ? '✗' : ''}</span>
             </label>
-            <span style={{marginLeft: '10px'}}>{type}</span>
+            <span style={{ marginLeft: '10px' }}>{type}</span>
           </div>
         ))}
       </div>
+      {/* Rarity Section */}
       <div className="filters-section">
         <strong>Rarity</strong>
-        {['Unique', 'Basic', 'Epic', 'Legendary'].map(type => (
+        {ITEM_RARITY.map(type => (
           <div key={type} style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
             <label className="custom-include-checkbox">
               <input
@@ -305,7 +298,7 @@ const Filters: React.FC<FiltersProps> = ({ filterState, setFilterState }) => {
               />
               <span className="custom-include-checkmark">{filterState.type.includes(type) ? '✓' : ''}</span>
             </label>
-            <label className="custom-exclude-checkbox" style={{marginLeft: '8px'}}>
+            <label className="custom-exclude-checkbox" style={{ marginLeft: '8px' }}>
               <input
                 type="checkbox"
                 checked={filterState.excludeType.includes(type)}
@@ -315,12 +308,12 @@ const Filters: React.FC<FiltersProps> = ({ filterState, setFilterState }) => {
               />
               <span className="custom-exclude-checkmark">{filterState.excludeType.includes(type) ? '✗' : ''}</span>
             </label>
-            <span style={{marginLeft: '10px'}}>{type}</span>
+            <span style={{ marginLeft: '10px' }}>{type}</span>
           </div>
         ))}
       </div>
-      {/*
-      <div className="filters-section filters-section-last">
+      {/* Role Section (uncomment if needed) */}
+      {/* <div className="filters-section filters-section-last">
         <strong>Role</strong>
         {ITEM_CLASSES.map(cls => (
           <div key={cls} style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
@@ -334,7 +327,7 @@ const Filters: React.FC<FiltersProps> = ({ filterState, setFilterState }) => {
               />
               <span className="custom-include-checkmark">{filterState.class.includes(cls) ? '✓' : ''}</span>
             </label>
-            <label className="custom-exclude-checkbox" style={{marginLeft: '8px'}}>
+            <label className="custom-exclude-checkbox" style={{ marginLeft: '8px' }}>
               <input
                 type="checkbox"
                 checked={filterState.excludeClass.includes(cls)}
@@ -344,11 +337,10 @@ const Filters: React.FC<FiltersProps> = ({ filterState, setFilterState }) => {
               />
               <span className="custom-exclude-checkmark">{filterState.excludeClass.includes(cls) ? '✗' : ''}</span>
             </label>
-            <span style={{marginLeft: '10px'}}>{cls}</span>
+            <span style={{ marginLeft: '10px' }}>{cls}</span>
           </div>
         ))}
-      </div>
-      */}
+      </div> */}
     </div>
   );
 };

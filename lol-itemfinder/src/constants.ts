@@ -1,18 +1,33 @@
-export const ITEM_TYPES = [
-  'Unique',
-  'Starter',
-  'Basic',
-  // 'Generic', 
-  'Epic', 
-  'Legendary', 
-  // 'Mythic', 
-  'Consumable', 
-  'Ward',
-  'Boots', 
+export const ITEM_MISC = [
   'Purchasable',
   'Champion-Specific'
 ];
-export const ITEM_STATS = [
+
+// export const MAP = [
+//   'Summoner\'s Rift',
+//   'Howling Abyss'
+// ];
+
+// export const GAME_MODE = [
+//   'Doom Bots',
+//   'Arena'
+// ];
+
+export const MAPS = [
+  { id: '11', name: "Summoner's Rift" },
+  { id: '12', name: 'Howling Abyss' },
+];
+
+export const GAME_MODES = [
+  // { id: 'CLASSIC', name: 'Classic' },
+  // { id: 'ARAM', name: 'ARAM' },
+  // { id: 'URF', name: 'URF (Ultra Rapid Fire)' },
+  { id: 'DOOMBOTS', name: 'Doom Bots' }, // <-- Added Doom Bots
+  { id: 'ARENA', name: 'Arena' },
+  // { id: 'TEAMFIGHTTACTICS', name: 'Teamfight Tactics' },
+];
+
+export const ITEM_STAT_EFFECT = [
   'Attack Damage',
   'Critical Strike',
   'Attack Speed',
@@ -41,6 +56,40 @@ export const ITEM_STATS = [
   'Magic Damage Shield *',
   'Spell Shield *'
 ];
+
+// export const ITEM_TYPES = [
+//   'Unique',
+//   'Starter',
+//   'Basic',
+//   // 'Generic', 
+//   'Epic', 
+//   'Legendary', 
+//   // 'Mythic', 
+//   'Consumable', 
+//   'Ward',
+//   'Boots', 
+//   'Purchasable',
+//   'Prismatic',
+//   'Champion-Specific'
+// ];
+
+export const ITEM_TYPE = [
+  'Starter',
+  'Consumable', 
+  'Ward',
+  'Boots'
+];
+
+export const ITEM_RARITY = [
+  'Unique',
+  // 'Starter',
+  'Basic',
+  // 'Generic', 
+  'Epic', 
+  'Legendary', 
+  // 'Mythic'
+];
+
 export const ITEM_CLASSES = [
   'Fighter', 
   'Marksman', 
