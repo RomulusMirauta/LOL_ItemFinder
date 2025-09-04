@@ -617,12 +617,18 @@ export function filterBySidebar(
           'Flesheater',
           'Gargoyle Stoneplate',
           'Cloak of Starry Night',
-          'Shield of Molten Stone'
-
-          // "Demon King's Crown",
-          // "Gambler's Blade",
+          'Shield of Molten Stone',
+          // 'Gambler\'s Blade', // old Doom Bots item
+          'Demon King\'s Crown',  // only available in EXTREME difficulty - Doom Bots Veigar's Evil
+          'Veigar\'s Talisman of Ascension' // only available in EXTREME difficulty - Doom Bots Veigar's Curse
         ];
-        return modes.includes('DOOMBOTS') || item.prismatic === true || doomBotsItems.includes(item.name);
+        // return modes.includes('DOOMBOTS') || item.prismatic === true || doomBotsItems.includes(item.name);
+        return (
+          item.gold?.total === 2500 && (
+          modes.includes('DOOMBOTS') ||
+          doomBotsItems.includes(item.name) ) ||
+          item.name === 'Veigar\'s Talisman of Ascension'
+        );
       }
       // Special rule: ARAM filter
       if (gameModeIncludeArr.includes('ARAM')) {
