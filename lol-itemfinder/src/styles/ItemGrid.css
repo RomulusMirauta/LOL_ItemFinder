@@ -19,7 +19,7 @@ import SortBar from './styles/SortBar.css'; */
   max-width: 1520px;
   /* max-width: 900px; */
   justify-items: center;
-  border: 3px solid #f0c674; 
+  /* border: 3px solid #f0c674;  */
   /*Change thickness, style, or color as needed */
   /* justify-content: center; */
 }

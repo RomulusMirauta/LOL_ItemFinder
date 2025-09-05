@@ -87,48 +87,89 @@ function App() {
   const [activeItem, setActiveItem] = useState<string | null>(null);
 
   return (
-    <div className="app-main-parent" style={{ 
+    <div className="app-main-parent-container" style={{ 
       display: 'flex', 
-      width: '100%', 
-      border: '5px solid #ff0000' 
-      }}> 
+      // width: '100%', 
+      width: 'auto', 
+      minWidth: '1905px',
+      maxWidth: '1905px',
+      position: 'relative',
+      // border: '5px solid #ff0000' 
+      }}>
+        <MainTitle version={version} />
       {/* HERE CONTAINER */}
       {/* Sidebar: MainTitle + Filters */}
       <div className="sidebar-header" style={{ 
         flex: '0 0 auto', 
-        border: '5px solid rgb(11, 134, 7)'
+        // border: '5px solid rgb(11, 134, 7)'
         }}>
           {/* HERE CONTAINER */}
-        <MainTitle version={version} />
+        {/* <MainTitle version={version} /> */}
         <Filters filterState={filterState} setFilterState={setFilterState} />
       </div>
       {/* Main content: SearchBar + SortBar + ItemGrid */}
       <div className="main-content" style={{ 
         flex: 1, 
+        display: 'flex', 
+        flexDirection: 'column', // stack children vertically
+        // alignItems: 'center',    // center horizontally
+        justifyContent: 'flex-start',
         marginLeft: '32px', 
         marginRight: '0px', 
         marginTop: '32px', 
         marginBottom: '32px',
         // minWidth: '400px',
-        border: '5px solid rgb(255, 0, 242)'
+        minWidth: '1500px',
+        maxWidth: '1600px',
+        // border: '5px solid rgb(255, 0, 242)'
         }}>
           {/* HERE CONTAINER */}
-        <SearchBar value={search} onChange={setSearch} />
+        {/* <SearchBar value={search} onChange={setSearch} /> */}
         <div style={{ 
           display: 'flex', 
+          justifyContent: 'center', // centers horizontally
+          alignItems: 'center', // centers vertically
+          width: '100%',
+          // marginBottom: '24px'
+        }}>
+        <SearchBar value={search} onChange={setSearch}/>
+        </div>
+        <div className="sortbar-and-itemcount-container" style={{ 
+          display: 'flex', 
           alignItems: 'center', 
+          // justifyContent: 'flex-start',
+          flexDirection: 'row', // stack children horizontally
+          // marginLeft: '10px',
           marginBottom: '5px', 
-          marginLeft: '100px', 
-          border: '4px solid rgb(68, 192, 214)' 
+          marginLeft: '35px', 
+          // width: '100%',
+          // border: '4px solid rgb(68, 192, 214)' 
           }}>
             {/* HERE CONTAINER */}
           {/* <div className="sort-bar-container" style={{ flex: '0 0 auto' }}> */}
-          <div className="sort-bar-container">
+          <div className="sort-bar-container" style={{
+            display: 'flex',
+            justifyContent: 'flex-start',
+            alignItems: 'center',
+            // width: '100%',
+            flex: '0 0 auto', // Do not stretch, stay left
+            // margin: '12px 0'
+            }}>
           {/* <div className="sort-bar-container" style={{ flex: '0 0 auto', border: '3px solid #f0c674' }}> */}
             <SortBar value={sort} onChange={setSort} />
           </div>
           {/* <div className="item-count-container" style={{ flex: 1, border: '3px solid #f0c674' }}> */}
-          <div className="item-count-container">
+          <div className="item-count-container" style={{
+            display: 'flex',
+            justifyContent: 'center',
+            // justifyContent: 'flex-end',
+            alignItems: 'center',
+            // marginLeft: '-245px', 
+            marginRight: '245px', 
+            // width: '100%',
+            flex: 1, // Take remaining space and center
+            // margin: '12px 0'
+            }}>
             <ItemCount
               count={
                 sortedItems.length === 0

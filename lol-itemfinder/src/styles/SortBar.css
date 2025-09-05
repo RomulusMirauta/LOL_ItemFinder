@@ -2,21 +2,21 @@
   align-self: flex-end;
   /* margin-top: 8px; */
   /* margin-right: 32px; */
-  margin-right: 60px;
-  min-width: 60px;
+  /* margin-right: 60px; */
+  /* min-width: 60px; */
   /* margin-left: 200px; */
-  margin-left: -65px;
+  /* margin-left: -65px; */
 
-  display: flex;
-  z-index: 10;
-  align-items: center;
+  /* display: flex; */
+  /* z-index: 10; */
+  /* align-items: center; */
 
   /* Equivalent in CSS of shorthand CSS, used in .tsx files: "style={{ flex: '0 0 auto' }}" */
-  display: flex;
-  flex-grow: 0;
-  flex-shrink: 0;
-  flex-basis: auto;
-  border: 3px solid #f0c674; 
+  /* display: flex; */
+  /* flex-grow: 0; */
+  /* flex-shrink: 0; */
+  /* flex-basis: auto; */
+  /* border: 3px solid #f0c674;  */
 }
 /* HERE CONTAINER */
 .sort-bar-select {

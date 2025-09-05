@@ -2,8 +2,8 @@
   display: flex;
   justify-content: center; 
   /* ok */
-  /* margin-bottom: 24px; */
-  margin: 0px 24px 24px 0px;
+  margin-bottom: 24px;
+  /* margin: 0px 24px 24px 0px; */
   /* align-self: flex-end; */
   /* align-content: flex-start; */
   /* width: 100%; */
@@ -12,7 +12,7 @@
   /* max-width: fit-content; */
   /* min-width: 1500px; */
   max-width: 400px;
-  border: 3px solid #f0c674; 
+  /* border: 3px solid #f0c674;  */
 }
 /* HERE CONTAINER */
 .searchbar-input {

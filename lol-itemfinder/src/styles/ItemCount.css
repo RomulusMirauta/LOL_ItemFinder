@@ -1,9 +1,18 @@
+.item-count-container {
+  display: flex;
+  justify-content: center;
+  /* width: calc(100% - var(--sort-bar-container-width)); */
+  /* width: 100%; */
+  /* border: 3px solid #ff7b00;  */
+}
+/* HERE CONTAINER */
 .item-count-under-search {
-  font-size: 1.08em;
+  /* font-size: 1.08em; */
+  font-size: 1.1em;
   color: #f0c674;
   font-weight: 600;
-  margin-left: 12px;
+  /* margin-left: 12px; */
   letter-spacing: 0.5px;
-  border: 3px solid #f0c674;
+  /* border: 3px solid #f0c674; */
 }
 /* HERE CONTAINER */
