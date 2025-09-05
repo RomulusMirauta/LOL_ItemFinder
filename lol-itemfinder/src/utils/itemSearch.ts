@@ -40,19 +40,55 @@ export function filterBySidebar(
   }
   const mapIncludeArr = filterState.mapInclude;
   const mapExcludeArr = filterState.mapExclude;
+  // Map filter logic
   if (mapIncludeArr.length > 0 || mapExcludeArr.length > 0) {
     filtered = filtered.filter(item => {
       if (item.maps) {
         // Include if available on any included map
         const isIncluded = mapIncludeArr.some(mapId => item.maps?.[mapId]);
-        // Exclude only if item is exclusive to an excluded map (not available on any included map)
-        const isExclusiveToExcluded = mapExcludeArr.some(mapId => {
-          return item.maps?.[mapId] &&
-            !mapIncludeArr.some(includeId => item.maps?.[includeId]);
-        });
-        return isIncluded && !isExclusiveToExcluded;
+        // Exclude if available on any excluded map
+        const isExcluded = mapExcludeArr.some(mapId => item.maps?.[mapId]);
+        // If Summoner's Rift is excluded, exclude items that would be included if Summoner's Rift was included
+        if (mapExcludeArr.includes('11')) {
+          if (item.maps['11']) return false;
+        }
+        // If Howling Abyss is excluded, exclude items that would be included if Howling Abyss was included
+        if (mapExcludeArr.includes('12')) {
+          if (item.maps['12']) return false;
+        }
+        return isIncluded && !isExcluded;
       }
       return true;
+    });
+  }
+  // Arena exclusion logic
+  if (filterState.gameModeExclude.includes('ARENA')) {
+    const arenaSpecialItems = [
+      'The Golden Spatula',
+      'Prismatic Item',
+      'Stat Bonus',
+      'Anvil Voucher',
+      'Gold Stat Anvil Voucher',
+      'Prismatic Stat Voucher',
+      'Bravery Voucher',
+      'Cappa Juice',
+      'Juice of Power',
+      'Juice of Vitality',
+      'Juice of Haste',
+      'Bandle Juice of Power',
+      'Bandle Juice of Vitality',
+      'Bandle Juice of Haste',
+      'Legendary Fighter Item',
+      'Legendary Marksman Item',
+      'Legendary Assassin Item',
+      'Legendary Mage Item',
+      'Legendary Tank Item',
+      'Legendary Support Item'
+    ];
+    filtered = filtered.filter(item => {
+      const modes: string[] = (item as Item & { gameModes?: string[] }).gameModes ?? [];
+      // Exclude items available in Arena or are Arena special items
+      return !modes.includes('ARENA') && !arenaSpecialItems.includes(item.name);
     });
   }
   const typeArr = filterState.type;
@@ -179,8 +215,9 @@ export function filterBySidebar(
     filtered = filtered.filter(item => {
       if (tenacityChecked) {
         const textFields = [item.name, item.plaintext || '', item.description, ...(item.tags || [])].map(f => f.toLowerCase());
+        const notTenacity = ['Gunmetal Greaves'];
         return tenacityPhrases.some(phrase =>
-          textFields.some(field => field.includes(phrase))
+          textFields.some(field => field.includes(phrase)) && !notTenacity.includes(item.name)
         );
       }
       // Anti-Heal filter implementation
@@ -535,6 +572,83 @@ export function filterBySidebar(
       });
     });
   }
+  const excludeStatArr = filterState.excludeStat;
+  const allExcludeStats = [...excludeStatArr];
+  // If caller included 'attack damage' (case-insensitive) ensure 'Attack Damage' variant exists in list
+  if (filterState.excludeStat.some(s => s.toLowerCase() === 'attack damage') && !allExcludeStats.includes('Attack Damage')) {
+    allExcludeStats.push('Attack Damage');
+  }
+  if (allExcludeStats.length > 0) {
+    filtered = filtered.filter(item => {
+      return !allExcludeStats.some(stat => {
+        const statLower = stat.toLowerCase();
+        const desc = (item.description || '').toLowerCase();
+        const plain = (item.plaintext || '').toLowerCase();
+        const tags = (item.tags || []).map((t: string) => t.toLowerCase());
+        return (
+          desc.includes(statLower) ||
+          plain.includes(statLower) ||
+          tags.includes(statLower)
+        );
+      });
+    });
+  }
+  // Exclude On-Hit Effects items when excluded
+  if (filterState.excludeStat.includes('On-Hit Effects')) {
+    filtered = filtered.filter(item => {
+      const textFields = [item.name, item.plaintext || '', item.description, ...(item.tags || [])].map(f => f.toLowerCase());
+      const isOnHit = textFields.some(field => field.includes('on hit') || field.includes('on-hit') || field.includes('onhit') || field.includes('spellblade'));
+      return !isOnHit;
+    });
+  }
+  // Exclude Lethality * items when excluded
+  if (filterState.excludeStat.includes('Lethality *')) {
+    filtered = filtered.filter(item => {
+      const textFields = [item.name, item.plaintext || '', item.description, ...(item.tags || [])].map(f => f.toLowerCase());
+      const isLethality = textFields.some(field => field.includes('lethality'));
+      return !isLethality;
+    });
+  }
+  // Exclude Mana & Regeneration items when excluded
+  if (filterState.excludeStat.includes('Mana & Regeneration')) {
+    filtered = filtered.filter(item => {
+      const textFields = [item.name, item.plaintext || '', item.description, ...(item.tags || [])].map(f => f.toLowerCase());
+      const isMana = textFields.some(field => field.includes('mana'));
+      return !isMana;
+    });
+  }
+  // Exclude Health & Regeneration items when excluded
+  if (filterState.excludeStat.includes('Health & Regeneration')) {
+    filtered = filtered.filter(item => {
+      const textFields = [item.name, item.plaintext || '', item.description, ...(item.tags || [])].map(f => f.toLowerCase());
+      const isHealth = textFields.some(field => field.includes('health') || field.includes('hp'));
+      return !isHealth;
+    });
+  }
+  // Exclude Magic Resistance items when excluded
+  if (filterState.excludeStat.includes('Magic Resistance')) {
+    filtered = filtered.filter(item => {
+      const textFields = [item.name, item.plaintext || '', item.description, ...(item.tags || [])].map(f => f.toLowerCase());
+      const isMR = textFields.some(field => field.includes('magic resistance') || field.includes('mr') || field.includes('magic resist'));
+      return !isMR;
+    });
+  }
+  // Exclude Movement Speed items when excluded
+  if (filterState.excludeStat.includes('Movement Speed')) {
+    filtered = filtered.filter(item => {
+      const textFields = [item.name, item.plaintext || '', item.description, ...(item.tags || [])].map(f => f.toLowerCase());
+      const isMS = textFields.some(field => field.includes('movement speed') || field.includes('ms') || field.includes('move speed'));
+      return !isMS;
+    });
+  }
+  // Exclude Life Steal & Omnivamp items when excluded
+  if (filterState.excludeStat.includes('Life Steal & Omnivamp')) {
+    filtered = filtered.filter(item => {
+      const textFields = [item.name, item.plaintext || '', item.description, ...(item.tags || [])].map(f => f.toLowerCase());
+      const isLifeSteal = textFields.some(field => field.includes('life steal') || field.includes('omnivamp') || field.includes('spell vamp') || field.includes('vamp') || field.includes('heal on attack'));
+      return !isLifeSteal;
+    });
+  }
   const classArr = filterState.class;
   if (classArr.length > 0) {
     filtered = filtered.filter(item => {
@@ -569,27 +683,6 @@ export function filterBySidebar(
         ) return false;
       }
       return !excludeTypeArr.some(type => item.tags?.includes(type) || item.type?.includes(type));
-    });
-  }
-  const excludeStatArr = filterState.excludeStat;
-  const allExcludeStats = [...excludeStatArr];
-  // If caller included 'attack damage' (case-insensitive) ensure 'Attack Damage' variant exists in list
-  if (filterState.excludeStat.some(s => s.toLowerCase() === 'attack damage') && !allExcludeStats.includes('Attack Damage')) {
-    allExcludeStats.push('Attack Damage');
-  }
-  if (allExcludeStats.length > 0) {
-    filtered = filtered.filter(item => {
-      return !allExcludeStats.some(stat => {
-        const statLower = stat.toLowerCase();
-        const desc = (item.description || '').toLowerCase();
-        const plain = (item.plaintext || '').toLowerCase();
-        const tags = (item.tags || []).map((t: string) => t.toLowerCase());
-        return (
-          desc.includes(statLower) ||
-          plain.includes(statLower) ||
-          tags.includes(statLower)
-        );
-      });
     });
   }
   const excludeClassArr = filterState.excludeClass;
@@ -737,10 +830,11 @@ export function filterItems(
     const tenacitySearch = tenacityPhrases.some(phrase => lowerSearch === phrase);
     filteredResult = filteredResult.filter(item => {
       const textFields = [item.name, item.plaintext || '', item.description, ...(item.tags || [])].map(f => f.toLowerCase());
+      const notTenacity = ['Gunmetal Greaves'];
       if (tenacitySearch || filterState.stat.map(s => s.toLowerCase()).includes('tenacity')) {
         // Only match items that strictly contain a tenacity phrase
         return tenacityPhrases.some(phrase =>
-          textFields.some(field => field.includes(phrase))
+          textFields.some(field => field.includes(phrase)) && !notTenacity.includes(item.name)
         );
       }
       // For other searches, fallback to substring match

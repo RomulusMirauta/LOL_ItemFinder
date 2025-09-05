@@ -12,9 +12,9 @@ export const tenacityPhrases = [
   'reduces disables',
   'mercury',
   'mercury treads',
-  'boots of swiftness',
+  // 'boots of swiftness',
   'legend: tenacity',
-  'stubborn',
+  // 'stubborn',
   'less affected by crowd control',
   'less affected by disables',
 ];
