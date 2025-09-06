@@ -3,17 +3,13 @@ League of Legends <br>
 Item Finder
 </h1>
 
-<br>
-
 <h6  align="center">
 
 <a href="https://www.leagueoflegends.com/">
   <img align="center"
-    src="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/.github/img/LOL_header1.webp"
+    src="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/main/.github/img/LOL_header1.webp"
     alt="LOL_header" />
 </a>
-
-<br><br>
 
 </h6>
 
@@ -32,7 +28,7 @@ Item Finder
 <br>
 
 ## I. Purposes <br>
-### - Self-training - creating my second web app. <br> - Creating an app that helps League of Legends players find the desire item, even when searching for keywords like "tenacity" *(not indexed in the actual game)*
+### - Self-training - creating my second web app. <br> - Creating an app that helps League of Legends players find the desire item, even when searching for keywords like "tenacity" or "active" *(not indexed in the actual game)*
 
 <br>
 
@@ -126,9 +122,9 @@ I have also added features that ***are not present in the actual game*** and tha
 
 ### VII. a. Main app screenshots
 
-<a href="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/main/github/img/main/app_screenshot1.png">
+<a href="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/main/.github/img/main/app_screenshot1.png">
   <img align="center"
-    src="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/main/github/img/main/app_screenshot1.png"
+    src="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/main/.github/img/main/app_screenshot1.png"
     alt="ss" />
 </a>
 
@@ -136,11 +132,9 @@ I have also added features that ***are not present in the actual game*** and tha
 
 <hr>
 
-<br>
-
-<a href="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/main/github/img/main/app_screenshot2.png">
+<a href="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/main/.github/img/main/app_screenshot2.png">
   <img align="center"
-    src="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/main/github/img/main/app_screenshot2.png"
+    src="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/main/.github/img/main/app_screenshot2.png"
     alt="ss" />
 </a>
 
@@ -148,11 +142,9 @@ I have also added features that ***are not present in the actual game*** and tha
 
 <hr>
 
-<br>
-
-<a href="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/main/github/img/main/app_screenshot3.png">
+<a href="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/main/.github/img/main/app_screenshot3.png">
   <img align="center"
-    src="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/main/github/img/main/app_screenshot3.png"
+    src="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/main/.github/img/main/app_screenshot3.png"
     alt="ss" />
 </a>
 
@@ -160,11 +152,9 @@ I have also added features that ***are not present in the actual game*** and tha
 
 <hr>
 
-<br>
-
-<a href="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/main/github/img/main/app_screenshot4.png">
+<a href="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/main/.github/img/main/app_screenshot4.png">
   <img align="center"
-    src="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/main/github/img/main/app_screenshot4.png"
+    src="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/main/.github/img/main/app_screenshot4.png"
     alt="ss" />
 </a>
 
@@ -172,9 +162,9 @@ I have also added features that ***are not present in the actual game*** and tha
 
 ### VII. b. Feature app screenshots
 
-<a href="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/main/github/img/features/app_screenshot_feature1.png">
+<a href="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/main/.github/img/features/app_screenshot_feature1.png">
   <img align="center"
-    src="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/main/github/img/features/app_screenshot_feature1.png"
+    src="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/main/.github/img/features/app_screenshot_feature1.png"
     alt="ss" />
 </a
 
@@ -182,11 +172,9 @@ I have also added features that ***are not present in the actual game*** and tha
 
 <hr>
 
-<br>
-
-<a href="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/main/github/img/features/app_screenshot_feature2.png">
+<a href="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/main/.github/img/features/app_screenshot_feature2.png">
   <img align="center"
-    src="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/main/github/img/features/app_screenshot_feature2.png"
+    src="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/main/.github/img/features/app_screenshot_feature2.png"
     alt="ss" />
 </a>
 
@@ -194,11 +182,9 @@ I have also added features that ***are not present in the actual game*** and tha
 
 <hr>
 
-<br>
-
-<a href="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/main/github/img/features/app_screenshot_feature3.png">
+<a href="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/main/.github/img/features/app_screenshot_feature3.png">
   <img align="center"
-    src="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/main/github/img/features/app_screenshot_feature3.png"
+    src="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/main/.github/img/features/app_screenshot_feature3.png"
     alt="ss" />
 </a>
 
@@ -206,11 +192,9 @@ I have also added features that ***are not present in the actual game*** and tha
 
 <hr>
 
-<br>
-
-<a href="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/main/github/img/features/app_screenshot_feature4.png">
+<a href="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/main/.github/img/features/app_screenshot_feature4.png">
   <img align="center"
-    src="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/main/github/img/features/app_screenshot_feature4.png"
+    src="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/main/.github/img/features/app_screenshot_feature4.png"
     alt="ss" />
 </a>
 
@@ -218,11 +202,9 @@ I have also added features that ***are not present in the actual game*** and tha
 
 <hr>
 
-<br>
-
-<a href="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/main/github/img/features/app_screenshot_feature5.png">
+<a href="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/main/.github/img/features/app_screenshot_feature5.png">
   <img align="center"
-    src="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/main/github/img/features/app_screenshot_feature5.png"
+    src="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/main/.github/img/features/app_screenshot_feature5.png"
     alt="ss" />
 </a>
 
@@ -230,11 +212,9 @@ I have also added features that ***are not present in the actual game*** and tha
 
 <hr>
 
-<br>
-
-<a href="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/main/github/img/features/app_screenshot_feature6.png">
+<a href="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/main/.github/img/features/app_screenshot_feature6.png">
   <img align="center"
-    src="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/main/github/img/features/app_screenshot_feature6.png"
+    src="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/main/.github/img/features/app_screenshot_feature6.png"
     alt="ss" />
 </a>
 
@@ -242,11 +222,9 @@ I have also added features that ***are not present in the actual game*** and tha
 
 <hr>
 
-<br>
-
-<a href="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/main/github/img/features/app_screenshot_feature7.png">
+<a href="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/main/.github/img/features/app_screenshot_feature7.png">
   <img align="center"
-    src="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/main/github/img/features/app_screenshot_feature7.png"
+    src="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/main/.github/img/features/app_screenshot_feature7.png"
     alt="ss" />
 </a>
 
@@ -254,11 +232,9 @@ I have also added features that ***are not present in the actual game*** and tha
 
 <hr>
 
-<br>
-
-<a href="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/main/github/img/features/app_screenshot_feature8.png">
+<a href="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/main/.github/img/features/app_screenshot_feature8.png">
   <img align="center"
-    src="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/main/github/img/features/app_screenshot_feature8.png"
+    src="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/main/.github/img/features/app_screenshot_feature8.png"
     alt="ss" />
 </a>
 
@@ -266,11 +242,9 @@ I have also added features that ***are not present in the actual game*** and tha
 
 <hr>
 
-<br>
-
-<a href="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/main/github/img/features/app_screenshot_feature9.png">
+<a href="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/main/.github/img/features/app_screenshot_feature9.png">
   <img align="center"
-    src="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/main/github/img/features/app_screenshot_feature9.png"
+    src="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/main/.github/img/features/app_screenshot_feature9.png"
     alt="ss" />
 </a>
 
@@ -278,11 +252,9 @@ I have also added features that ***are not present in the actual game*** and tha
 
 <hr>
 
-<br>
-
-<a href="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/main/github/img/features/app_screenshot_feature10.png">
+<a href="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/main/.github/img/features/app_screenshot_feature10.png">
   <img align="center"
-    src="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/main/github/img/features/app_screenshot_feature10.png"
+    src="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/main/.github/img/features/app_screenshot_feature10.png"
     alt="ss" />
 </a>
 
