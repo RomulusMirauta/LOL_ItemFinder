@@ -9,7 +9,7 @@ Item Finder
 
 <a href="https://www.leagueoflegends.com/">
   <img align="center"
-    src="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/main/img/LOL_header1.webp"
+    src="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/.github/img/LOL_header1.webp"
     alt="LOL_header" />
 </a>
 
