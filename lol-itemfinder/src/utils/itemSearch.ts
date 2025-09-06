@@ -607,6 +607,26 @@ export function filterBySidebar(
           plain.includes('starting')
         ) return false;
       }
+      // Exclude Prismatic items when excluded
+      if (filterState.excludeType.includes('Prismatic')) {
+        // filtered = filtered.filter(item => !(item.prismatic === true));
+        const isPrismatic = (
+          DOOM_BOTS_SPECIAL_ITEMS.includes(item.name) ||
+          item.name === 'Veigar\'s Talisman of Ascension'
+        );
+        return !isPrismatic;
+      }
+      // Exclude Basic items when excluded
+      if (filterState.excludeType.includes('Basic')) {
+        const desc = (item.description || '').toLowerCase();
+        const isBasic = (
+          item.rarityGeneric === true ||
+          desc.includes('raritygeneric') ||
+          desc.includes('<raritygeneric>') ||
+          desc.includes('</raritygeneric>')
+        );
+        return !isBasic;
+      }
       // Exclude Ward items when excluded
       if (excludeTypeArr.includes('Ward')) {
         // const type = (item.description || '').toLowerCase();
@@ -622,13 +642,18 @@ export function filterBySidebar(
           item.description.toLowerCase().includes('warding')
         ) return false;
       }
-        // filtered = filtered.filter(item => {
-          // const isWard = (item.tags?.includes('Ward') || item.type?.includes('Ward') || item.name.toLowerCase().includes('ward') || item.name.toLowerCase().includes('trinket') || item.name.toLowerCase().includes('lens') || item.name.toLowerCase().includes('farsight') || item.description.toLowerCase().includes('warding'));
-          // const isWard = 
-        // return isWard;
-        // return isWard;
-        // });
-      // };
+      // Exclude Legendary items when excluded
+      if (excludeTypeArr.includes('Legendary')) {
+        if (
+          item.rarityLegendary === true ||
+          item.tags?.includes('rarityLegendary') ||
+          item.type?.includes('rarityLegendary') ||
+          item.description.includes('raritylegendary') ||
+          item.description.includes('<raritylegendary>') ||
+          item.description.includes('legendary') ||
+          item.name.toLowerCase().includes('legendary')
+          ) return false;
+      }
       return !excludeTypeArr.some(type => item.tags?.includes(type) || item.type?.includes(type));
     });
   }
