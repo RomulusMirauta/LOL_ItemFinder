@@ -17,18 +17,30 @@ Item Finder
 
 </h6>
 
+## Table of Contents
+- I. [Purposes](https://github.com/RomulusMirauta/LOL_ItemFinder#i-purpose) <br>
+- II. [Link for live app](https://github.com/RomulusMirauta/LOL_ItemFinder#ii-check-out-the-live-app-here) <br>
+- III. [Main features]() <br>
+- IV. [AI info]() <br>
+- V. [Main technologies]() <br>
+- VI. [SW info]() <br>
+- VII. [App screenshots]() <br>
+  - VII. a. [Main app screenshots]() <br>
+  - VII. b. [Feature app screenshots]() <br>
+- VIII. [Note]() <br>
+
 <br>
 
-## Purposes <br>
+## I. Purposes <br>
 ### - Self-training - creating my second web app. <br> - Creating an app that helps League of Legends players find the desire item, even when searching for keywords like "tenacity" *(not indexed in the actual game)*
 
 <br>
 
-## Check out the live app here: [https://lol-item-finder.vercel.app/](https://lol-item-finder.vercel.app/)
+## II. Check out the live app here: [https://lol-item-finder.vercel.app/](https://lol-item-finder.vercel.app/)
 
 <br>
 
-## Main features
+## III. Main features
 I have also added features that ***are not present in the actual game*** and that allow the user to:
 - Filter items by:
   - Being `Purchasable` *(useful to search for old items or old item stats; e.g.: Duskblade of Draktharr, Goredrinker)*
@@ -104,7 +116,7 @@ I have also added features that ***are not present in the actual game*** and tha
 
 <br>
 
-## AI info
+## IV. AI info
 
 - The code was written with the help of Copilot, along with these LLMs:
   - GPT-4o
@@ -116,7 +128,7 @@ I have also added features that ***are not present in the actual game*** and tha
 
 <br>
 
-## Main technologies used in building this app
+## V. Main technologies used in building this app
 
 - **React** with **TypeScript** – for robust, type-safe UI development
 - **Vite** – fast development server and optimized production builds
@@ -129,7 +141,7 @@ I have also added features that ***are not present in the actual game*** and tha
 
 <br>
 
-## SW info
+## VI. SW info
 
 - Microsoft Visual Studio Code + extensions:
   - GitHub Copilot
@@ -145,9 +157,9 @@ I have also added features that ***are not present in the actual game*** and tha
 
 <br>
 
-## App screenshots
+## VII. App screenshots
 
-### Main app screenshots
+### VII. a. Main app screenshots
 
 <a href="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/main/github/img/main/app_screenshot1.png">
   <img align="center"
@@ -193,7 +205,7 @@ I have also added features that ***are not present in the actual game*** and tha
 
 <br><br>
 
-### Feature app screenshots
+### VII. b. Feature app screenshots
 
 <a href="https://raw.githubusercontent.com/RomulusMirauta/LOL_ItemFinder/refs/heads/main/github/img/features/app_screenshot_feature1.png">
   <img align="center"
@@ -310,6 +322,8 @@ I have also added features that ***are not present in the actual game*** and tha
 </a>
 
 <br><br>
+
+### VIII. Note
 
 > [!NOTE]
 > "League of Legends - Item Finder" is not endorsed by Riot Games and does not reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. Riot Games and all associated properties are trademarks or registered trademarks of Riot Games, Inc
