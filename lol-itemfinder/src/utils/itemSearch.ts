@@ -501,6 +501,79 @@ export function filterBySidebar(
       return !isLifeSteal;
     });
   }
+  // Exclude Tenacity * items when excluded
+  if (filterState.excludeStat.includes('Tenacity *')) {
+    filtered = filtered.filter(item => {
+      const textFields = [item.name, item.plaintext || '', item.description, ...(item.tags || [])].map(f => f.toLowerCase());
+      const isTenacity = TENACITY_KEYWORDS.some(phrase => textFields.some(field => field.includes(phrase)));
+      return !isTenacity;
+    });
+  }
+  // Exclude Anti-Heal * items when excluded
+  if (filterState.excludeStat.includes('Anti-Heal *')) {
+    filtered = filtered.filter(item => {
+      const textFields = [item.name, item.plaintext || '', item.description, ...(item.tags || [])].map(f => f.toLowerCase());
+      const isAntiHeal = ANTI_HEAL_KEYWORDS.some(keyword => textFields.some(field => field.includes(keyword)));
+      return !isAntiHeal;
+    });
+  }
+  // Exclude Anti-Shield * items when excluded
+  if (filterState.excludeStat.includes('Anti-Shield *')) {
+    filtered = filtered.filter(item => {
+      const textFields = [item.name, item.plaintext || '', item.description, ...(item.tags || [])].map(f => f.toLowerCase());
+      const isAntiShield = ANTI_SHIELD_KEYWORDS.some(keyword => textFields.some(field => field.includes(keyword)));
+      return !isAntiShield;
+    });
+  }
+  // Exclude All Shield Types * items when excluded
+  if (filterState.excludeStat.includes('All Shield Types *')) {
+    filtered = filtered.filter(item => {
+      const textFields = [item.name || '', item.description].map(f => f.toLowerCase());
+      const matchesShieldKeywords = ALL_SHIELD_TYPES_KEYWORDS.some(keyword => 
+        textFields.some(field => field.includes(keyword)));
+      return !matchesShieldKeywords;
+    });
+  }
+  // Exclude Omni-Shield * items when excluded
+  if (filterState.excludeStat.includes('Omni-Shield *')) {
+    filtered = filtered.filter(item => {
+      const textFields = [item.name || item.plaintext || '', item.description].map(f => f.toLowerCase());
+      const matchesShieldKeywords = OMNI_SHIELD_KEYWORDS.some(keyword =>
+        textFields.some(field => field.includes(keyword))
+      );
+      return !matchesShieldKeywords;
+    });
+  }
+  // Exclude Physical Damage Shield * items when excluded
+  if (filterState.excludeStat.includes('Physical Damage Shield *')) {
+    filtered = filtered.filter(item => {
+      const textFields = [item.name || item.plaintext || '', item.description, ...(item.tags || [])].map(f => f.toLowerCase());
+      const matchesPhysicalShield = PHYSICAL_DAMAGE_SHIELD_KEYWORDS.some(keyword =>
+        textFields.some(field => field.includes(keyword))
+      );
+      return !matchesPhysicalShield;
+    });
+  }
+  // Exclude Magic Damage Shield * items when excluded
+  if (filterState.excludeStat.includes('Magic Damage Shield *')) {
+    filtered = filtered.filter(item => {
+      const textFields = [item.name || item.plaintext || '', item.description, ...(item.tags || [])].map(f => f.toLowerCase());
+      const matchesMagicShield = MAGIC_DAMAGE_SHIELD_KEYWORDS.some(keyword =>
+        textFields.some(field => field.includes(keyword))
+      );
+      return !matchesMagicShield;
+    });
+  }
+  // Exclude Spell Shield * items when excluded
+  if (filterState.excludeStat.includes('Spell Shield *')) {
+    filtered = filtered.filter(item => {
+      const textFields = [item.name || item.plaintext || '', item.description, ...(item.tags || [])].map(f => f.toLowerCase());
+      const matchesSpellShield = SPELL_SHIELD_KEYWORDS.some(keyword =>
+        textFields.some(field => field.includes(keyword))
+      );
+      return !matchesSpellShield;
+    });
+  }
   const classArr = filterState.class;
   if (classArr.length > 0) {
     filtered = filtered.filter(item => {
@@ -534,6 +607,28 @@ export function filterBySidebar(
           plain.includes('starting')
         ) return false;
       }
+      // Exclude Ward items when excluded
+      if (excludeTypeArr.includes('Ward')) {
+        // const type = (item.description || '').toLowerCase();
+        // const name = (item.plaintext || '').toLowerCase();
+        // const desc = (item.description || '').toLowerCase();
+        if (
+          item.tags?.includes('Ward') || 
+          item.type?.includes('Ward') || 
+          item.name.toLowerCase().includes(' ward') ||
+          item.name.toLowerCase().includes('trinket') ||
+          item.name.toLowerCase().includes('lens') || 
+          item.name.toLowerCase().includes('farsight') || 
+          item.description.toLowerCase().includes('warding')
+        ) return false;
+      }
+        // filtered = filtered.filter(item => {
+          // const isWard = (item.tags?.includes('Ward') || item.type?.includes('Ward') || item.name.toLowerCase().includes('ward') || item.name.toLowerCase().includes('trinket') || item.name.toLowerCase().includes('lens') || item.name.toLowerCase().includes('farsight') || item.description.toLowerCase().includes('warding'));
+          // const isWard = 
+        // return isWard;
+        // return isWard;
+        // });
+      // };
       return !excludeTypeArr.some(type => item.tags?.includes(type) || item.type?.includes(type));
     });
   }
