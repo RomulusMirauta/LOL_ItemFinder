@@ -14,16 +14,16 @@ Item Finder
 </h6>
 
 ## Table of Contents
-- I. [Purposes](https://github.com/RomulusMirauta/LOL_ItemFinder#i-purpose) <br>
-- II. [Link for live app](https://github.com/RomulusMirauta/LOL_ItemFinder#ii-check-out-the-live-app-here) <br>
-- III. [Main features]() <br>
-- IV. [AI info]() <br>
-- V. [Main technologies]() <br>
-- VI. [SW info]() <br>
-- VII. [App screenshots]() <br>
-  - VII. a. [Main app screenshots]() <br>
-  - VII. b. [Feature app screenshots]() <br>
-- VIII. [Note]() <br>
+- I. [Purposes](https://github.com/RomulusMirauta/LOL_ItemFinder#i-purposes-) <br>
+- II. [Link for live app](https://github.com/RomulusMirauta/LOL_ItemFinder#ii-check-out-the-live-app-here-httpslol-item-findervercelapp) <br>
+- III. [Main features](https://github.com/RomulusMirauta/LOL_ItemFinder#iii-main-features) <br>
+- IV. [AI info](https://github.com/RomulusMirauta/LOL_ItemFinder#iv-ai-info) <br>
+- V. [Main technologies](https://github.com/RomulusMirauta/LOL_ItemFinder#v-main-technologies-used-in-building-this-app) <br>
+- VI. [SW info](https://github.com/RomulusMirauta/LOL_ItemFinder#vi-sw-info) <br>
+- VII. [App screenshots](https://github.com/RomulusMirauta/LOL_ItemFinder#vii-app-screenshots) <br>
+  - VII. a. [Main app screenshots](https://github.com/RomulusMirauta/LOL_ItemFinder#vii-a-main-app-screenshots) <br>
+  - VII. b. [Feature app screenshots](https://github.com/RomulusMirauta/LOL_ItemFinder#vii-b-feature-app-screenshots) <br>
+- VIII. [Note](https://github.com/RomulusMirauta/LOL_ItemFinder#viii-note) <br>
 
 <br>
 
