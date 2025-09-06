@@ -16,6 +16,7 @@ export const ITEM_MISC = [
 export const MAPS = [
   { id: '11', name: "Summoner's Rift" },
   { id: '12', name: 'Howling Abyss' },
+  // { id: '30', name: 'Arena' }
 ];
 
 export const GAME_MODES = [
@@ -81,13 +82,13 @@ export const ITEM_TYPE = [
 ];
 
 export const ITEM_RARITY = [
-  'Unique',
+  // 'Unique',
   // 'Starter',
   'Basic',
   // 'Generic', 
-  'Epic', 
+  // 'Epic', 
   'Legendary', 
-  'Mythic',
+  // 'Mythic',
   'Prismatic' 
 ];
 

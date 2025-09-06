@@ -78,6 +78,8 @@ export const ARENA_SPECIAL_ITEMS = [
   // 'Juices',
 
   'The Golden Spatula',
+  'Wooglet\'s Witchcap',
+  'Talisman Of Ascension',
 
   'Prismatic Item',
   

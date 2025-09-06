@@ -1,5 +1,6 @@
 import type { FilterState } from '../types/types';
 import type { Item } from '../types/item';
+
 // import { tenacityPhrases } from './itemConstants';
 import { 
   TENACITY_KEYWORDS,
@@ -14,12 +15,10 @@ import {
   SPELL_SHIELD_KEYWORDS,
   EXCLUDED_FROM_ACTIVE_ITEMS,
   NOT_TENACITY_ITEMS,
-
-
-
-
  } from './itemConstants';
+
 import { filterByAttackDamage } from './itemFilters';
+
 import { 
   ITEM_MISC, 
   // MAPS, 
@@ -87,6 +86,13 @@ export function filterBySidebar(
       return !modes.includes('ARENA') && !ARENA_SPECIAL_ITEMS.includes(item.name);
     });
   }
+  // Doom Bots exclusion logic
+  if (filterState.gameModeExclude.includes('DOOMBOTS')) {
+    filtered = filtered.filter(item => {
+      const modes: string[] = (item as Item & { gameModes?: string[] }).gameModes ?? [];
+      return !modes.includes('DOOMBOTS') && !(item.prismatic === true) && !DOOM_BOTS_SPECIAL_ITEMS.includes(item.name);
+    });
+  }
   const typeArr = filterState.type;
   // Misc filters implementation (dynamic)
   ITEM_MISC.forEach(misc => {
@@ -139,8 +145,10 @@ export function filterBySidebar(
           return (
             item.prismatic === true ||
             item.name.toLowerCase().includes('prismatic') ||
-            item.description.toLowerCase().includes('prismatic') ||
-            DOOM_BOTS_SPECIAL_ITEMS.map(i => i.toLowerCase()).includes(item.name.toLowerCase())
+            // item.description.toLowerCase().includes('prismatic') ||
+            ( DOOM_BOTS_SPECIAL_ITEMS.map(i => i.toLowerCase()).includes(item.name.toLowerCase()) && item.gold?.total === 2500) ||
+            item.name === 'Veigar\'s Talisman of Ascension'
+            // ARENA_SPECIAL_ITEMS.map(i => i.toLowerCase()).includes(item.name.toLowerCase())
           );
         }
         return false;
@@ -269,20 +277,22 @@ export function filterBySidebar(
         const matchesShieldKeywords = OMNI_SHIELD_KEYWORDS.some(keyword =>
           textFields.some(field => field.includes(keyword))
         );
-        // const excludeKeywords = [
-        //   'magic damage shield',
-        //   'spell shield',
-        //   'magic shield',
-        //   'soul anchor',
-        //   '<shield>magic shield</shield>',
-        //   '<shield>physical shield</shield>',
-        //   '<shield>magic damage shield</shield>'
-        // ];
-        // const matchesExclude = excludeKeywords.some(keyword =>
-        //   textFields.some(field => field.includes(keyword))
-        // );
-        // return matchesShieldKeywords && !matchesExclude;
-        return matchesShieldKeywords
+        const excludeKeywords = [
+          // 'magic damage shield',
+          // 'spell shield',
+          // 'magic shield',
+          // 'soul anchor',
+          // '<shield>magic shield</shield>',
+          '<shield></shield> <magicDamage>magic</magicDamage> <shield>shield</shield>',
+          '<shield></shield> <physicalDamage>physical</physicalDamage> <shield>shield</shield>',
+          // '<shield>physical shield</shield>',
+          // '<shield>magic damage shield</shield>'
+        ].map(k => k.toLowerCase());
+        const matchesExclude = excludeKeywords.some(keyword =>
+          textFields.some(field => field.includes(keyword))
+        );
+        return matchesShieldKeywords && !matchesExclude;
+        // return matchesShieldKeywords
       }
       // Physical Damage Shield * filter implementation
       if (statArr.includes('Physical Damage Shield *')) {
@@ -548,6 +558,11 @@ export function filterBySidebar(
           DOOM_BOTS_SPECIAL_ITEMS.includes(item.name) ) ||
           item.name === 'Veigar\'s Talisman of Ascension'
         );
+        // return (
+        //   modes.includes('DOOMBOTS') ||
+        //   DOOM_BOTS_SPECIAL_ITEMS.includes(item.name) ||
+        //   item.name === 'Veigar\'s Talisman of Ascension'
+        // );
       }
       // Special rule: ARAM filter
       if (gameModeIncludeArr.includes('ARAM')) {
