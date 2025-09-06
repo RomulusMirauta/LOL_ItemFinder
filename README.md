@@ -58,40 +58,6 @@ I have also added features that ***are not present in the actual game*** and tha
 
 <br>
 
-| Filter Type                | Description                                                                                                   | Example Items                                      |
-|----------------------------|---------------------------------------------------------------------------------------------------------------|----------------------------------------------------|
-| Purchasable                | Useful to search for old items or old item stats                                                              | Duskblade of Draktharr, Goredrinker                |
-| Champion-Specific          | Items only usable by specific champions                                                                       | Fiddlesticks' Scarecrow Effigy, Kalista's Black Spear, Gangplank's Ultimate Upgrades |
-| Stat: Lethality            | Flat armor penetration, scales with enemy champion level                                                      | The Collector, Youmuu's Ghostblade                 |
-| Stat: Tenacity             | Reduces CC (including hard CC) duration                                                                       | Mercury's Treads, Wit's End                        |
-| Effect: Active             | Item has an activatable effect                                                                                | Zhonya's Hourglass, Ravenous Hydra                 |
-| Effect: Anti-Heal          | Applies Grievous Wounds                                                                                       | Morellonomicon, Mortal Reminder                    |
-| Effect: Anti-Shield        | Counters shields (only Serpent's Fang is available atm 🥹)                                                    | Serpent's Fang                                     |
-| Effect: All Shield Types   | All items that give any type of shield(s)                                                                     | Various                                            |
-| Effect: Omni-Shield        | Items that give an 'all-purpose' shield, sustaining any type of damage                                        | Bloodthirster, Eclipse, Sterak's Gage              |
-| Effect: Physical Damage Shield | Only item(s) that give(s) a physical damage shield (only Armored Advance is available atm 🥹)             | Armored Advance                                    |
-| Effect: Magic Damage Shield| Only items that give a magic damage shield                                                                    | Hexdrinker, Maw of Malmortius                      |
-| Effect: Spell Shield       | Items that give a spell shield                                                                                | Banshee's Veil, Edge of Night                      |
-
-<br>
-
-| Filter Category | Filter Type                | Description                                                                                                   | Example Items                                      |
-|-------------|---------------------------|---------------------------------------------------------------------------------------------------------------|----------------------------------------------------|
-| Misc        | Purchasable                | Useful to search for old items or old item stats                                                              | Duskblade of Draktharr, Goredrinker                |
-| Misc        | Champion-Specific          | Items only usable by specific champions                                                                       | Fiddlesticks' Scarecrow Effigy, Kalista's Black Spear, Gangplank's Ultimate Upgrades |
-| Stat        | Lethality            | Flat armor penetration, scales with enemy champion level                                                      | The Collector, Youmuu's Ghostblade                 |
-| Stat        | Tenacity             | Reduces CC (including hard CC) duration                                                                       | Mercury's Treads, Wit's End                        |
-| Effect      | Active             | Item has an activatable effect                                                                                | Zhonya's Hourglass, Ravenous Hydra                 |
-| Effect      | Anti-Heal          | Applies Grievous Wounds                                                                                       | Morellonomicon, Mortal Reminder                    |
-| Effect      | Anti-Shield        | Counters shields (only Serpent's Fang is available atm 🥹)                                                    | Serpent's Fang                                     |
-| Effect      | All Shield Types   | All items that give any type of shield(s)                                                                     | Various                                            |
-| Effect      | Omni-Shield        | Items that give an 'all-purpose' shield, sustaining any type of damage                                        | Bloodthirster, Eclipse, Sterak's Gage              |
-| Effect      | Physical Damage Shield | Only item(s) that give(s) a physical damage shield (only Armored Advance is available atm 🥹)             | Armored Advance                                    |
-| Effect      | Magic Damage Shield| Only items that give a magic damage shield                                                                    | Hexdrinker, Maw of Malmortius                      |
-| Effect      | Spell Shield       | Items that give a spell shield                                                                                | Banshee's Veil, Edge of Night                      |
-
-<br>
-
 | Filter Category | Filter Type                | Description                                                                                                   | Example Items                                      |
 |-------------|---------------------------|---------------------------------------------------------------------------------------------------------------|----------------------------------------------------|
 | Misc        | `Purchasable`                | Useful to search for old items or old item stats                                                              | Duskblade of Draktharr, Goredrinker                |
@@ -108,7 +74,6 @@ I have also added features that ***are not present in the actual game*** and tha
 | Effect      | `Spell Shield`       | Items that give a spell shield                                                                                | Banshee's Veil, Edge of Night                      |
 | Game Mode      | `Doom Bots`       | Only items specific to latest Doom Bots game mode version (2025)                                                                             | Hextech Gunblade, Atma's Reckoning, Zephyr                    |
 | Game Mode      | `Arena`      | Only items specific to latest Arena game mode version (2025)                                                                             | Talisman Of Ascension, Wooglet's Witchcap, The Golden Spatula                    |
-
 
 - Filter items by special Game Modes, like:
   - `Doom Bots`
