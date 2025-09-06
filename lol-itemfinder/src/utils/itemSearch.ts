@@ -574,6 +574,20 @@ export function filterBySidebar(
       return !matchesSpellShield;
     });
   }
+  // Exclude Active * items when excluded
+  if (filterState.excludeStat.includes('Active *')) {
+    filtered = filtered.filter(item => {
+      const textFields = [item.name, item.plaintext || '', item.description, ...(item.tags || [])].map(f => f.toLowerCase());
+      // Exclude potions, elixirs, and wards
+      if (EXCLUDED_FROM_ACTIVE_ITEMS.includes(item.name)) return true;
+      // Look for activation keywords
+      const isActive = textFields.some(field =>
+        field.includes('active') ||
+        field.includes('activation')
+      );
+      return !isActive;
+    });
+  }
   const classArr = filterState.class;
   if (classArr.length > 0) {
     filtered = filtered.filter(item => {
