@@ -27,7 +27,9 @@
 .item-card-title {
   color: #f0c674;
   font-size: 1.1em;
-  margin: 0 0 6px;
+  /* margin: 0 0 6px; */
+  margin: 0px 0px 6px 0px;
+  /* padding: 0px 0px; */
   font-weight: 600;
 }
 .item-card-gold-container {
