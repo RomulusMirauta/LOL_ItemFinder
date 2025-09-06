@@ -1,6 +1,24 @@
 import type { FilterState } from '../types/types';
 import type { Item } from '../types/item';
-import { tenacityPhrases } from './itemConstants';
+// import { tenacityPhrases } from './itemConstants';
+import { 
+  TENACITY_KEYWORDS,
+  ARENA_SPECIAL_ITEMS,
+  DOOM_BOTS_SPECIAL_ITEMS,
+  ANTI_HEAL_KEYWORDS,
+  ANTI_SHIELD_KEYWORDS,
+  ALL_SHIELD_TYPES_KEYWORDS,
+  OMNI_SHIELD_KEYWORDS,
+  PHYSICAL_DAMAGE_SHIELD_KEYWORDS,
+  MAGIC_DAMAGE_SHIELD_KEYWORDS,
+  SPELL_SHIELD_KEYWORDS,
+  EXCLUDED_FROM_ACTIVE_ITEMS,
+  NOT_TENACITY_ITEMS,
+
+
+
+
+ } from './itemConstants';
 import { filterByAttackDamage } from './itemFilters';
 import { 
   ITEM_MISC, 
@@ -63,32 +81,10 @@ export function filterBySidebar(
   }
   // Arena exclusion logic
   if (filterState.gameModeExclude.includes('ARENA')) {
-    const arenaSpecialItems = [
-      'The Golden Spatula',
-      'Prismatic Item',
-      'Stat Bonus',
-      'Anvil Voucher',
-      'Gold Stat Anvil Voucher',
-      'Prismatic Stat Voucher',
-      'Bravery Voucher',
-      'Cappa Juice',
-      'Juice of Power',
-      'Juice of Vitality',
-      'Juice of Haste',
-      'Bandle Juice of Power',
-      'Bandle Juice of Vitality',
-      'Bandle Juice of Haste',
-      'Legendary Fighter Item',
-      'Legendary Marksman Item',
-      'Legendary Assassin Item',
-      'Legendary Mage Item',
-      'Legendary Tank Item',
-      'Legendary Support Item'
-    ];
     filtered = filtered.filter(item => {
       const modes: string[] = (item as Item & { gameModes?: string[] }).gameModes ?? [];
       // Exclude items available in Arena or are Arena special items
-      return !modes.includes('ARENA') && !arenaSpecialItems.includes(item.name);
+      return !modes.includes('ARENA') && !ARENA_SPECIAL_ITEMS.includes(item.name);
     });
   }
   const typeArr = filterState.type;
@@ -104,7 +100,7 @@ export function filterBySidebar(
     // Add more misc filters here if needed
   });
   // Rarity filters
-  const rarityArr = typeArr.filter(type => ['Unique', 'Basic', 'Epic', 'Legendary', 'Prismatic'].includes(type));
+  const rarityArr = typeArr.filter(type => ['Unique', 'Basic', 'Epic', 'Legendary', 'Mythic', 'Prismatic'].includes(type));
   if (rarityArr.length > 0) {
     filtered = filtered.filter(item => {
       return rarityArr.some(rarity => {
@@ -140,24 +136,11 @@ export function filterBySidebar(
           );
         }
         if (rarity === 'Prismatic') {
-          const doomBotsItems = [
-            'Crown of the Shattered Queen',
-            "Hextech Gunblade",
-            'Cruelty',
-            'Sword of Blossoming Dawn',
-            'Sword of the Divine',
-            "Atma's Reckoning",
-            'Zephyr',
-            'Flesheater',
-            'Gargoyle Stoneplate',
-            'Cloak of Starry Night',
-            'Shield of Molten Stone'
-          ];
           return (
             item.prismatic === true ||
             item.name.toLowerCase().includes('prismatic') ||
             item.description.toLowerCase().includes('prismatic') ||
-            doomBotsItems.map(i => i.toLowerCase()).includes(item.name.toLowerCase())
+            DOOM_BOTS_SPECIAL_ITEMS.map(i => i.toLowerCase()).includes(item.name.toLowerCase())
           );
         }
         return false;
@@ -215,67 +198,21 @@ export function filterBySidebar(
     filtered = filtered.filter(item => {
       if (tenacityChecked) {
         const textFields = [item.name, item.plaintext || '', item.description, ...(item.tags || [])].map(f => f.toLowerCase());
-        const notTenacity = ['Gunmetal Greaves'];
-        return tenacityPhrases.some(phrase =>
-          textFields.some(field => field.includes(phrase)) && !notTenacity.includes(item.name)
+        return TENACITY_KEYWORDS.some(phrase =>
+          textFields.some(field => field.includes(phrase)) && !NOT_TENACITY_ITEMS.includes(item.name)
         );
       }
       // Anti-Heal filter implementation
       if (antiHealChecked) {
         const textFields = [item.name, item.plaintext || '', item.description, ...(item.tags || [])].map(f => f.toLowerCase());
-        // Common anti-heal keywords
-        const antiHealKeywords = [
-          'grievous wounds',
-          'anti-heal',
-          'healing reduction',
-          'reduces healing',
-          'reduce healing',
-          'inflict grievous wounds',
-          'applies grievous wounds',
-          'applies anti-heal',
-          'reduce the effectiveness of healing',
-          'reducing healing',
-          'heal reduction',
-          'healing is reduced',
-          'heal is reduced',
-          'heal is less effective',
-          'less healing',
-          'reduced healing',
-        ];
-        return antiHealKeywords.some(keyword =>
+        return ANTI_HEAL_KEYWORDS.some(keyword =>
           textFields.some(field => field.includes(keyword))
         );
       }
       // Anti-Shield filter implementation
       if (antiShieldChecked) {
         const textFields = [item.name, item.plaintext || '', item.description, ...(item.tags || [])].map(f => f.toLowerCase());
-        // Common anti-shield keywords
-        const antiShieldKeywords = [
-          'anti-shield',
-          'shield reduction',
-          'reduces shields',
-          'reduce shield',
-          'shield is reduced',
-          'shield is less effective',
-          'less shield',
-          'reduced shield',
-          'shield breaker',
-          'breaks shield',
-          'break shield',
-          'shield destruction',
-          'destroy shield',
-          'destroy shields',
-          'shield is destroyed',
-          'removes shield',
-          'removes shields',
-          'removes enemy shield',
-          'removes target shield',
-          'removes target shields',
-          'removes all shields',
-          'removes all enemy shields',
-          'removes all target shields',
-        ];
-        return antiShieldKeywords.some(keyword =>
+        return ANTI_SHIELD_KEYWORDS.some(keyword =>
           textFields.some(field => field.includes(keyword))
         );
       }
@@ -284,41 +221,7 @@ export function filterBySidebar(
       if (statArr.includes('All Shield Types *')) {
         // const textFields = [item.name || item.plaintext || '', item.description, ...(item.tags || [])].map(f => f.toLowerCase());
         const textFields = [item.name || '', item.description].map(f => f.toLowerCase());
-        const shieldKeywords = [
-          // 'grants a shield',
-          // ' that regenerates after killing large monsters or out of combat',
-          // '<shield>',
-          // '</shield>',
-          '<shield>200 - 360 Shield</shield>',
-          // 'Shield</shield>',
-          '<shield>shield</shield>',
-          '<shield> shield</shield>',
-          '<shield>magic shield</shield>',
-          '<shield>physical shield</shield>',
-          '<shield>decaying shield</shield>',
-          '<shield>magic damage shield</shield>',
-          '<shield></shield>',
-          'granting a shield', // Deep Freeze
-          'small shield', // Lover's Ricochet
-          // 'gain shield',
-          // 'grant shield',
-          // 'gain a shield',
-          // 'if you are struck by the lightning, gain a ', // Lightning Rod
-          // 'damage shield',
-          'spell shield',
-          'physical shield',
-          'magic shield',
-          'shield that decays', // Gargoyle Stoneplate
-          'that decays over 2.5 seconds.', // Locket of the Iron Solari
-          'grant you or your targeted ally a shield',
-          'grants you a shield',
-          'magic damage shield',
-          'decaying shield',
-          // 'lifeline',
-          // 'convert excess healing from your lifesteal to a shield', // Bloodthirster
-          // ' a champion, gain a ' // Armored Advance, Chainlaced Crushers
-        ].map(k => k.toLowerCase());
-        const matchesShieldKeywords = shieldKeywords.some(keyword => 
+        const matchesShieldKeywords = ALL_SHIELD_TYPES_KEYWORDS.some(keyword => 
           textFields.some(field => field.includes(keyword)));
         // const isNotShield = textFields.some(field => field.includes('Move faster while attacking enemies and gain a shield when on low health.'));
         // const isNotShield = [
@@ -363,26 +266,7 @@ export function filterBySidebar(
         // First, get all items that match All Shield Types *
         // const textFields = [item.name || item.plaintext || '', item.description, ...(item.tags || [])].map(f => f.toLowerCase());
         const textFields = [item.name || item.plaintext || '', item.description].map(f => f.toLowerCase());
-        const shieldKeywords = [
-          '<shield>shield</shield>',
-          '<shield> shield</shield>',
-          // '<shield>magic shield</shield>',
-          // '<shield>physical shield</shield>',
-          '<shield>decaying shield</shield>',
-          // '<shield>magic damage shield</shield>',
-          '<shield></shield>',
-          'granting a shield', // Deep Freeze
-          'small shield', // Lover's Ricochet
-          // 'spell shield',
-          'shield that decays', // Gargoyle Stoneplate
-          'that decays over 2.5 seconds.', // Locket of the Iron Solari
-          'grant you or your targeted ally a shield',
-          'grants you a shield',
-          // 'magic damage shield',
-          'decaying shield',
-          // 'lifeline',
-        ].map(k => k.toLowerCase());
-        const matchesShieldKeywords = shieldKeywords.some(keyword =>
+        const matchesShieldKeywords = OMNI_SHIELD_KEYWORDS.some(keyword =>
           textFields.some(field => field.includes(keyword))
         );
         // const excludeKeywords = [
@@ -404,10 +288,7 @@ export function filterBySidebar(
       if (statArr.includes('Physical Damage Shield *')) {
         // Get all items that match All Shield Types * and also have 'physical shield'
         const textFields = [item.name || item.plaintext || '', item.description, ...(item.tags || [])].map(f => f.toLowerCase());
-        const shieldKeywords = [
-          '<shield></shield> <physicalDamage>physical</physicalDamage> <shield>shield</shield>'
-        ].map(k => k.toLowerCase());
-        const matchesShieldKeywords = shieldKeywords.some(keyword =>
+        const matchesShieldKeywords = PHYSICAL_DAMAGE_SHIELD_KEYWORDS.some(keyword =>
           textFields.some(field => field.includes(keyword))
         );
         // const matchesPhysical = textFields.some(field => field.includes('physical shield'));
@@ -417,24 +298,14 @@ export function filterBySidebar(
       }
       if (statArr.includes('Magic Damage Shield *')) {
         const textFields = [item.name || item.plaintext || '', item.description, ...(item.tags || [])].map(f => f.toLowerCase());
-        const shieldKeywords = [
-          '<shield></shield> <magicDamage>magic</magicDamage> <shield>shield</shield>',
-          '<shield>magic shield</shield>',
-          '<shield>magic damage shield</shield>',
-          // 'spell shield',
-          'magic damage shield'
-        ].map(k => k.toLowerCase());
-        const matchesShieldKeywords = shieldKeywords.some(keyword =>
+        const matchesShieldKeywords = MAGIC_DAMAGE_SHIELD_KEYWORDS.some(keyword =>
           textFields.some(field => field.includes(keyword))
         );
         return matchesShieldKeywords;
       }
       if (statArr.includes('Spell Shield *')) {
         const textFields = [item.name || item.plaintext || '', item.description, ...(item.tags || [])].map(f => f.toLowerCase());
-        const shieldKeywords = [
-          'spell shield'
-        ].map(k => k.toLowerCase());
-        const matchesShieldKeywords = shieldKeywords.some(keyword =>
+        const matchesShieldKeywords = SPELL_SHIELD_KEYWORDS.some(keyword =>
           textFields.some(field => field.includes(keyword))
         );
         return matchesShieldKeywords;
@@ -521,36 +392,7 @@ export function filterBySidebar(
       if (statArr.includes('Active *')) {
         const textFields = [item.name, item.plaintext || '', item.description, ...(item.tags || [])].map(f => f.toLowerCase());
         // Exclude potions, elixirs, and wards
-        const excludedFromActiveItems = [
-          'Health Potion',
-
-          'Elixir of Iron',
-          'Elixir of Sorcery',
-          'Elixir of Wrath',
-          'Elixir of Skill',
-          'Elixir of Ruin',
-          'Elixir of Force',
-          'Elixir of Stealth',
-
-          'Cappa Juice',
-          'Refillable Potion',
-          'Corrupting Potion',
-          'Total Biscuit of Everlasting Will',
-
-          'Stealth Ward',
-          'Control Ward',
-          'Oracle Lens',
-          'Farsight Alteration',
-          'Warding Totem',
-          'Red Trinket',
-          'Blue Trinket',
-          'Yellow Trinket',
-
-          'Voltaic Cyclosword',
-          'Opportunity',
-          'Hubris'
-        ];
-        if (excludedFromActiveItems.includes(item.name)) return false;
+        if (EXCLUDED_FROM_ACTIVE_ITEMS.includes(item.name)) return false;
         // Look for activation keywords
         const isActive = textFields.some(field =>
           field.includes('active') ||
@@ -699,27 +541,11 @@ export function filterBySidebar(
       const modes: string[] = (item as Item & { gameModes?: string[] }).gameModes ?? [];
       // Special rule: Doom Bots filter
       if (gameModeIncludeArr.includes('DOOMBOTS')) {
-        const doomBotsItems = [
-          'Crown of the Shattered Queen',
-          "Hextech Gunblade",
-          'Cruelty',
-          'Sword of Blossoming Dawn',
-          'Sword of the Divine',
-          "Atma's Reckoning",
-          'Zephyr',
-          'Flesheater',
-          'Gargoyle Stoneplate',
-          'Cloak of Starry Night',
-          'Shield of Molten Stone',
-          // 'Gambler\'s Blade', // old Doom Bots item
-          'Demon King\'s Crown',  // only available in EXTREME difficulty - Doom Bots Veigar's Evil
-          'Veigar\'s Talisman of Ascension' // only available in EXTREME difficulty - Doom Bots Veigar's Curse
-        ];
         // return modes.includes('DOOMBOTS') || item.prismatic === true || doomBotsItems.includes(item.name);
         return (
           item.gold?.total === 2500 && (
           modes.includes('DOOMBOTS') ||
-          doomBotsItems.includes(item.name) ) ||
+          DOOM_BOTS_SPECIAL_ITEMS.includes(item.name) ) ||
           item.name === 'Veigar\'s Talisman of Ascension'
         );
       }
@@ -736,40 +562,8 @@ export function filterBySidebar(
       // Special rule: Arena filter
       if (gameModeIncludeArr.includes('ARENA')) {
         // Show items available in Arena, plus special Arena items
-        const arenaSpecialItems = [
-          // 'Prismatic Anvil',
-          // 'Legendary Anvil',
-          // 'Stat Anvil',
-          // 'Augments',
-          // 'Juices',
 
-          'The Golden Spatula',
-
-          'Prismatic Item',
-          
-          'Stat Bonus',
-          'Anvil Voucher',
-          'Gold Stat Anvil Voucher',
-          'Prismatic Stat Voucher',
-          'Bravery Voucher',
-
-          'Cappa Juice',
-          'Juice of Power',
-          'Juice of Vitality',
-          'Juice of Haste',
-
-          'Bandle Juice of Power',
-          'Bandle Juice of Vitality',
-          'Bandle Juice of Haste',
-
-          'Legendary Fighter Item',
-          'Legendary Marksman Item',
-          'Legendary Assassin Item',
-          'Legendary Mage Item',
-          'Legendary Tank Item',
-          'Legendary Support Item'
-        ];
-        return modes.includes('ARENA') || arenaSpecialItems.includes(item.name);
+        return modes.includes('ARENA') || ARENA_SPECIAL_ITEMS.includes(item.name);
       }
       // Special rule: Teamfight Tactics filter
       if (gameModeIncludeArr.includes('TEAMFIGHTTACTICS')) {
@@ -827,14 +621,14 @@ export function filterItems(
   // Then apply search
   if (search) {
     const lowerSearch = search.toLowerCase();
-    const tenacitySearch = tenacityPhrases.some(phrase => lowerSearch === phrase);
+    const tenacitySearch = TENACITY_KEYWORDS.some(phrase => lowerSearch === phrase);
     filteredResult = filteredResult.filter(item => {
       const textFields = [item.name, item.plaintext || '', item.description, ...(item.tags || [])].map(f => f.toLowerCase());
-      const notTenacity = ['Gunmetal Greaves'];
+      // const notTenacity = ['Gunmetal Greaves'];
       if (tenacitySearch || filterState.stat.map(s => s.toLowerCase()).includes('tenacity')) {
         // Only match items that strictly contain a tenacity phrase
-        return tenacityPhrases.some(phrase =>
-          textFields.some(field => field.includes(phrase)) && !notTenacity.includes(item.name)
+        return TENACITY_KEYWORDS.some(phrase =>
+          textFields.some(field => field.includes(phrase)) && !NOT_TENACITY_ITEMS.includes(item.name)
         );
       }
       // For other searches, fallback to substring match

@@ -1,6 +1,6 @@
 import type { Item } from '../types/item';
 // src/utils/itemFilters.ts
-import { tenacityPhrases } from './itemConstants';
+import { TENACITY_KEYWORDS } from './itemConstants';
 import { normalizeText, tagsToLower } from './itemUtils';
 
 export function filterByAttackDamage(item: Item): boolean {
@@ -28,7 +28,7 @@ export function filterByAttackSpeed(item: Item): boolean {
 
 export function filterByTenacity(item: Item): boolean {
   const textFields = [item.name, item.plaintext || '', item.description, ...(item.tags || [])].map(normalizeText);
-  return tenacityPhrases.some(phrase =>
+  return TENACITY_KEYWORDS.some(phrase =>
     textFields.some(field => field.includes(phrase))
   );
 }
