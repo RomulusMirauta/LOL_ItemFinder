@@ -71,6 +71,8 @@ I have also added features that ***are not present in the actual game*** and tha
 | Game Mode      | `Doom Bots`       | Only items specific to latest Doom Bots game mode version (2025)                                                                             | Hextech Gunblade, Atma's Reckoning, Zephyr                    |
 | Game Mode      | `Arena`      | Only items specific to latest Arena game mode version (2025)                                                                             | Talisman Of Ascension, Wooglet's Witchcap, The Golden Spatula                    |
 
+<br>
+
 - Filter items by special Game Modes, like:
   - `Doom Bots`
   - `Arena`
