@@ -21,22 +21,22 @@ function App() {
   }, []);
   // Filters state - set default enabled filters
   const [filterState, setFilterState] = useState<FilterState>({
-    purchasableInclude: [],
-    // purchasableInclude: ['yes'], // => this will be enabled by default
+    // purchasableInclude: [],
+    purchasableInclude: ['yes'], // => this will be enabled by default
     purchasableExclude: [],
-    mapInclude: [],
-    // mapInclude: ['11'],
+    // mapInclude: [],
+    mapInclude: ['11'],
     mapExclude: [],
     // mapExclude: ['12'],
     type: [],
-    excludeType: [], 
-    // excludeType: ['Champion-Specific'],
-    stat: [''],
+    // excludeType: [], 
+    excludeType: ['Champion-Specific'],
+    stat: [],
     excludeStat: [],
     class: [],
     excludeClass: [],
     gameModeInclude: [],
-    gameModeExclude: [],
+    gameModeExclude: ['DOOMBOTS', 'ARENA'],
   });
   const [items, setItems] = useState<Record<string, Item>>({});
   const [search, setSearch] = useState('');
