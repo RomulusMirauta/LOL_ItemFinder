@@ -45,12 +45,12 @@ I have also added features that ***are not present in the actual game*** and tha
   - Stat = `Tenacity` *(reduces CC (including hard CC) duration; e.g.: Mercury's Treads, Wit's End)*
   - Effect = `Active` *(item has an activatable effect; e.g.: Zhonya's Hourglass, Ravenous Hydra)*
   - Effect = `Anti-Heal` *(aka Grievous Wounds; e.g.: Morellonomicon, Mortal Reminder)*
-  - Effect = `Anti-Shield` *(only Serpent's Fang is available atm 🥹)*
+  - Effect = `Anti-Shield` *(reduces gained shields; only Serpent's Fang is available atm 🥹)* ***
   - Effect = `All Shield` Types *(all items that give any type of shield(s))*
-  - Effect = `Omni-Shield` *(only items that give an 'all-purpose' shield, being able to sustain any type of damage; e.g.: Bloodthirster, Eclipse, Sterak's Gage)*
-  - Effect = `Physical Damage Shield` *(only item(s) that give(s) a physical damage shield; only Armored Advance (upgrade of boots Plated Steelcaps) is available atm 🥹)*
-  - Effect = `Magic Damage Shield` *(only items that give a magic damage shield; e.g.: Hexdrinker, Maw of Malmortius)*
-  - Effect = `Spell Shield` *(; e.g.: Banshee's Veil, Edge of Night)*
+  - Effect = `Omni-Shield` *(only items that give an 'all-purpose' shield, being able to sustain **any** type of damage; e.g.: Bloodthirster, Eclipse, Sterak's Gage)*
+  - Effect = `Physical Damage Shield` *(only item(s) that give(s) a shield which provides %protection% for one or more physical damage spells or attacks; only Armored Advance (upgrade of boots: Plated Steelcaps) is available atm 🥹)*
+  - Effect = `Magic Damage Shield` *(only items that give a shield which provides %protection% for one or more magic damage spells or attacks; e.g.: Hexdrinker, Maw of Malmortius)*
+  - Effect = `Spell Shield` *(only items that give a shield which provides immunity for one enemy spell; e.g.: Banshee's Veil, Edge of Night)* ***
 
 <br>
 
@@ -81,7 +81,7 @@ I have also added features that ***are not present in the actual game*** and tha
 
 ## IV. AI info
 
-- The code was written with the help of Copilot (Chat, Edit & Agent), along with these LLMs:
+- The code was written with the help of Copilot *(Chat, Edit & Agent)*, along with these LLMs:
   - GPT-4o
   - GPT-4.1
   - GPT-5 (Preview)
