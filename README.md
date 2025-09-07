@@ -23,12 +23,12 @@ Item Finder
 - VII. [App screenshots](https://github.com/RomulusMirauta/LOL_ItemFinder#vii-app-screenshots) <br>
   - VII. a. [Main app screenshots](https://github.com/RomulusMirauta/LOL_ItemFinder#vii-a-main-app-screenshots) <br>
   - VII. b. [Feature app screenshots](https://github.com/RomulusMirauta/LOL_ItemFinder#vii-b-feature-app-screenshots) <br>
-- VIII. [Note](https://github.com/RomulusMirauta/LOL_ItemFinder#viii-note) <br>
+- VIII. [Note](https://github.com/RomulusMirauta/LOL_ItemFinder#viii-disclaimer-note) <br>
 
 <br>
 
 ## I. Purposes <br>
-### - Self-training - creating my second web app. <br> - Creating an app that helps League of Legends players find the desire item, even when searching for keywords like "tenacity" or "active" *(not indexed in the actual game)*
+### - Self-training - creating my second web app <br> - Creating an app that helps League of Legends players find the desired item, even when searching for keywords like "tenacity" or "active" *(not indexed in the actual game)*
 
 <br>
 
@@ -54,6 +54,12 @@ I have also added features that ***are not present in the actual game*** and tha
 
 <br>
 
+- Filter items by special Game Modes, like:
+  - `Doom Bots`
+  - `Arena`
+
+<br>
+
 | Filter Category | Filter Type                | Description                                                                                                   | Example Items                                      |
 |-------------|---------------------------|---------------------------------------------------------------------------------------------------------------|----------------------------------------------------|
 | Misc        | `Purchasable`                | Useful to search for old items or old item stats                                                              | Duskblade of Draktharr, Goredrinker                |
@@ -73,15 +79,9 @@ I have also added features that ***are not present in the actual game*** and tha
 
 <br>
 
-- Filter items by special Game Modes, like:
-  - `Doom Bots`
-  - `Arena`
-
-<br>
-
 ## IV. AI info
 
-- The code was written with the help of Copilot, along with these LLMs:
+- The code was written with the help of Copilot (Chat, Edit & Agent), along with these LLMs:
   - GPT-4o
   - GPT-4.1
   - GPT-5 (Preview)
@@ -262,7 +262,6 @@ I have also added features that ***are not present in the actual game*** and tha
 
 <br><br>
 
-### VIII. Note
-
+### VIII. Disclaimer Note
 > [!NOTE]
 > "League of Legends - Item Finder" is not endorsed by Riot Games and does not reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. Riot Games and all associated properties are trademarks or registered trademarks of Riot Games, Inc
