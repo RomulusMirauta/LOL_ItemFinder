@@ -23,7 +23,7 @@ Item Finder
 - VII. [App screenshots](https://github.com/RomulusMirauta/LOL_ItemFinder#vii-app-screenshots) <br>
   - VII. a. [Main app screenshots](https://github.com/RomulusMirauta/LOL_ItemFinder#vii-a-main-app-screenshots) <br>
   - VII. b. [Feature app screenshots](https://github.com/RomulusMirauta/LOL_ItemFinder#vii-b-feature-app-screenshots) <br>
-- VIII. [Note](https://github.com/RomulusMirauta/LOL_ItemFinder#viii-disclaimer-note) <br>
+- VIII. [Disclaimer Note](https://github.com/RomulusMirauta/LOL_ItemFinder#viii-disclaimer-note) <br>
 
 <br>
 
