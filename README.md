@@ -28,7 +28,7 @@ VIII. &nbsp;[Disclaimer Note](https://github.com/RomulusMirauta/LOL_ItemFinder#v
 <br>
 
 ## I. Purposes <br>
-### - Self-training - creating my second web app <br> - Creating an app that helps League of Legends players find the desired item, even when searching for keywords like "tenacity" or "active" *(not indexed in the actual game)*
+### - Self-training - creating my second web app <br> - Creating an app that helps League of Legends players find the desired item(s), even when searching for keywords like "tenacity" or "active" *(not that easy to find in the actual game)*
 
 <br>
 
@@ -37,7 +37,7 @@ VIII. &nbsp;[Disclaimer Note](https://github.com/RomulusMirauta/LOL_ItemFinder#v
 <br>
 
 ## III. Main features
-### I have also added features that ***are not present in the actual game*** and that allow the user to filter items by various Stats (e.g.: `Lethality`, `Tenacity`), Effects (e.g.: having an `Active`, `Anti-Shield`, `Magic Damage Shield`) and special Game Modes (e.g.: `Doom Bots`, `Arena`), as well as by miscellaneous characteristics like currently being `Purchasable` and `Champion-Specific`.
+### I have also added features that ***are not present in-game*** and that allow the user to filter items by various Stats (e.g.: `Lethality`, `Tenacity`), Effects (e.g.: having an `Active`, `Anti-Shield`, `Magic Damage Shield`) and special Game Modes (e.g.: `Doom Bots`, `Arena`), as well as by miscellaneous characteristics like currently being `Purchasable` and `Champion-Specific`.
 
 <!-- 
 I have also added features that ***are not present in the actual game*** and that allow the user to filter items by: 
