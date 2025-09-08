@@ -28,7 +28,7 @@ VIII. &nbsp;[Disclaimer Note](https://github.com/RomulusMirauta/LOL_ItemFinder#v
 <br>
 
 ## I. Purposes <br>
-### - Self-training - creating my second web app <br> - Creating an app that helps League of Legends players find the desired item(s), even when searching for keywords like "tenacity" or "active" *(not that easy to find in the actual game)*
+### - Self-training - creating my second web app <br> - Finding AI limitations, solutions and workarounds <br> - Creating an app that helps League of Legends players find the desired item(s), even when searching for keywords like "tenacity" or "active" *(not that easy to find in the actual game)*
 
 <br>
 
