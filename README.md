@@ -25,6 +25,32 @@ Item Finder
   - VII. b. [Feature app screenshots](https://github.com/RomulusMirauta/LOL_ItemFinder#vii-b-feature-app-screenshots) <br>
 - VIII. [Disclaimer Note](https://github.com/RomulusMirauta/LOL_ItemFinder#viii-disclaimer-note) <br>
 
+
+I. [Purposes](https://github.com/RomulusMirauta/LOL_ItemFinder#i-purposes-) <br>
+II. [Link for live app](https://github.com/RomulusMirauta/LOL_ItemFinder#ii-check-out-the-live-app-here-httpslol-item-findervercelapp) <br>
+III. [Main features](https://github.com/RomulusMirauta/LOL_ItemFinder#iii-main-features) <br>
+IV. [AI info](https://github.com/RomulusMirauta/LOL_ItemFinder#iv-ai-info) <br>
+V. [Main technologies](https://github.com/RomulusMirauta/LOL_ItemFinder#v-main-technologies-used-in-building-this-app) <br>
+VI. [SW info](https://github.com/RomulusMirauta/LOL_ItemFinder#vi-sw-info) <br>
+VII. [App screenshots](https://github.com/RomulusMirauta/LOL_ItemFinder#vii-app-screenshots) <br>
+&nbsp;&nbsp;&nbsp;&nbsp; VII. a. [Main app screenshots](https://github.com/RomulusMirauta/LOL_ItemFinder#vii-a-main-app-screenshots) <br>
+&nbsp;&nbsp;&nbsp;&nbsp; VII. b. [Feature app screenshots](https://github.com/RomulusMirauta/LOL_ItemFinder#vii-b-feature-app-screenshots) <br>
+VIII. [Disclaimer Note](https://github.com/RomulusMirauta/LOL_ItemFinder#viii-disclaimer-note) <br>
+
+
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+> one
+>> two
+>>> three
+>>> 
+Indented text using HTML. <br>
+&nbsp;&nbsp;&nbsp;&nbsp;Indented text using HTML.
+
+
 <br>
 
 ## I. Purposes <br>
