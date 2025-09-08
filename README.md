@@ -14,17 +14,6 @@ Item Finder
 </h6>
 
 ## Table of Contents
-I. [Purposes](https://github.com/RomulusMirauta/LOL_ItemFinder#i-purposes-) <br>
-II. [Link for live app](https://github.com/RomulusMirauta/LOL_ItemFinder#ii-check-out-the-live-app-here-httpslol-item-findervercelapp) <br>
-III. [Main features](https://github.com/RomulusMirauta/LOL_ItemFinder#iii-main-features) <br>
-IV. [AI info](https://github.com/RomulusMirauta/LOL_ItemFinder#iv-ai-info) <br>
-V. [Main technologies](https://github.com/RomulusMirauta/LOL_ItemFinder#v-main-technologies-used-in-building-this-app) <br>
-VI. [SW info](https://github.com/RomulusMirauta/LOL_ItemFinder#vi-sw-info) <br>
-VII. [App screenshots](https://github.com/RomulusMirauta/LOL_ItemFinder#vii-app-screenshots) <br>
-&nbsp;&nbsp;&nbsp;&nbsp; VII. a. [Main app screenshots](https://github.com/RomulusMirauta/LOL_ItemFinder#vii-a-main-app-screenshots) <br>
-&nbsp;&nbsp;&nbsp;&nbsp; VII. b. [Feature app screenshots](https://github.com/RomulusMirauta/LOL_ItemFinder#vii-b-feature-app-screenshots) <br>
-VIII. [Disclaimer Note](https://github.com/RomulusMirauta/LOL_ItemFinder#viii-disclaimer-note) <br>
-
 I. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Purposes](https://github.com/RomulusMirauta/LOL_ItemFinder#i-purposes-) <br>
 II. &nbsp;&nbsp;&nbsp;&nbsp;[Link for live app](https://github.com/RomulusMirauta/LOL_ItemFinder#ii-check-out-the-live-app-here-httpslol-item-findervercelapp) <br>
 III. &nbsp;&nbsp;&nbsp;[Main features](https://github.com/RomulusMirauta/LOL_ItemFinder#iii-main-features) <br>
@@ -101,19 +90,19 @@ I have also added features that ***are not present in the actual game*** and tha
 | Filter Category | Filter                | Description                                                                                                   | Example Items                                      |
 |-------------|---------------------------|---------------------------------------------------------------------------------------------------------------|----------------------------------------------------|
 | Misc        | `Purchasable`                | Useful to search for old items or old item stats                                                              | Duskblade of Draktharr, Goredrinker                |
-| Misc        | `Champion-Specific`          | Items only usable by specific champions                                                                       | Fiddlesticks' Scarecrow Effigy, Kalista's Black Spear, Gangplank's Ultimate Upgrades |
-| Stat        | `Lethality`            | Flat armor penetration, scales with enemy champion level                                                      | The Collector, Youmuu's Ghostblade                 |
+| Misc        | `Champion-Specific`          | Items only purchasable and usable when playing specific champions                                                                     | Gangplank's Ultimate Upgrades, Fiddlesticks' Scarecrow Effigy, Kalista's Black Spear |
+| Stat        | `Lethality`            | Flat armor penetration that scales with enemy champion level                                                      | The Collector, Youmuu's Ghostblade                 |
 | Stat        | `Tenacity`             | Reduces CC *(including hard CC)* duration                                                                       | Mercury's Treads, Wit's End                        |
-| Effect      | `Active`             | Item has an activatable effect                                                                                | Zhonya's Hourglass, Ravenous Hydra                 |
-| Effect      | `Anti-Heal`          | Applies "Grievous Wounds"                                                                                       | Morellonomicon, Mortal Reminder                    |
+| Effect      | `Active`             | Items that have an activatable effect                                                                                | Zhonya's Hourglass, Ravenous Hydra                 |
+| Effect      | `Anti-Heal`          | Items that make spells *(champion abilities)* apply "Grievous Wounds" debuff                                                                                       | Morellonomicon, Mortal Reminder                    |
 | Effect      | `Anti-Shield`        | Reduces % of gained shields                                                    | Only Serpent's Fang is available atm 🥹                                     |
 | Effect      | `All Shield Types`   | All items that give any type of shield(s)                                                                     | *Various*                                            |
-| Effect      | `Omni-Shield`        | Only items that give an 'all-purpose' shield, being able to sustain **any** type of damage                                        | Bloodthirster, Eclipse, Sterak's Gage              |
-| Effect      | `Physical Damage Shield` | Only item(s) that give(s) a shield which provides %protection% for one or more physical damage spells or attacks            | Only Armored Advance *(upgrade of boots: Plated Steelcaps)* is available atm 🥹                                    |
-| Effect      | `Magic Damage Shield` | Only items that give a shield which provides %protection% for one or more magic damage spells or attacks                                                                    | Hexdrinker, Maw of Malmortius                      |
-| Effect      | `Spell Shield`       | Only items that give a shield which provides immunity for one enemy spell                                                                                | Banshee's Veil, Edge of Night                      |
-| Game Mode      | `Doom Bots`       | Only items specific to latest Doom Bots game mode version (2025)                                                                             | Hextech Gunblade, Atma's Reckoning, Zephyr                    |
-| Game Mode      | `Arena`      | Only items specific to latest Arena game mode version (2025)                                                                             | Talisman Of Ascension, Wooglet's Witchcap, The Golden Spatula                    |
+| Effect      | `Omni-Shield`        | Only items that give an *'all-purpose'* shield, being able to sustain **any** type of damage                                        | Bloodthirster, Eclipse, Sterak's Gage              |
+| Effect      | `Physical Damage Shield` | Only item(s) that give(s) a shield which provides **%protection%** for one or more physical damage spells or attacks            | Only Armored Advance *(upgrade of boots: Plated Steelcaps)* is available atm 🥹                                    |
+| Effect      | `Magic Damage Shield` | Only items that give a shield which provides **%protection%** for one or more magic damage spells or attacks                                                                    | Hexdrinker, Maw of Malmortius                      |
+| Effect      | `Spell Shield`       | Only items that give a shield which provides **immunity** for one enemy spell                                                                                | Banshee's Veil, Edge of Night                      |
+| Game Mode      | `Doom Bots`       | Only items specific to latest Doom Bots game mode version *(2025)*                                                                             | Hextech Gunblade, Atma's Reckoning, Flesheater, Zephyr                    |
+| Game Mode      | `Arena`      | Only items specific to latest Arena game mode version *(2025)*                                                                             | Talisman Of Ascension, Wooglet's Witchcap, The Golden Spatula                    |
 
 <br>
 
