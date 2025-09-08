@@ -37,6 +37,31 @@ Item Finder
 <br>
 
 ## III. Main features
+### I have also added features that ***are not present in the actual game*** and that allow the user to filter items by various Stats (e.g.: `Lethality`, `Tenacity`), Effects (e.g.: having an `Active`, `Anti-Shield`, `Magic Damage Shield`) and special Game Modes (e.g.: `Doom Bots`, `Arena`), as well as by miscellaneous characteristics like currently being `Purchasable` and `Champion-Specific`.
+
+<!-- 
+I have also added features that ***are not present in the actual game*** and that allow the user to filter items by: 
+- Misc
+  - `Purchasable`
+  - `Champion-Specific`
+- Stat
+  - `Lethality`
+  - `Tenacity`
+- Effect
+  - `Active`
+  - `Anti-Heal`
+  - `Anti-Shield`
+  - `All Shield Types`
+  - `Omni-Shield`
+  - `Physical Damage Shield`
+  - `Magic Damage Shield`
+  - `Spell Shield`
+- Game Mode
+  - `Doom Bots`
+  - `Arena`
+-->
+
+<!-- 
 I have also added features that ***are not present in the actual game*** and that allow the user to:
 - Filter items by:
   - Being `Purchasable` *(useful to search for old items or old item stats; e.g.: Duskblade of Draktharr, Goredrinker)*
@@ -46,7 +71,7 @@ I have also added features that ***are not present in the actual game*** and tha
   - Effect = `Active` *(item has an activatable effect; e.g.: Zhonya's Hourglass, Ravenous Hydra)*
   - Effect = `Anti-Heal` *(aka Grievous Wounds; e.g.: Morellonomicon, Mortal Reminder)*
   - Effect = `Anti-Shield` *(reduces gained shields; only Serpent's Fang is available atm 🥹)* ***
-  - Effect = `All Shield` Types *(all items that give any type of shield(s))*
+  - Effect = `All Shield Types` *(all items that give any type of shield(s))*
   - Effect = `Omni-Shield` *(only items that give an 'all-purpose' shield, being able to sustain **any** type of damage; e.g.: Bloodthirster, Eclipse, Sterak's Gage)*
   - Effect = `Physical Damage Shield` *(only item(s) that give(s) a shield which provides %protection% for one or more physical damage spells or attacks; only Armored Advance (upgrade of boots: Plated Steelcaps) is available atm 🥹)*
   - Effect = `Magic Damage Shield` *(only items that give a shield which provides %protection% for one or more magic damage spells or attacks; e.g.: Hexdrinker, Maw of Malmortius)*
@@ -57,6 +82,8 @@ I have also added features that ***are not present in the actual game*** and tha
 - Filter items by special Game Modes, like:
   - `Doom Bots`
   - `Arena`
+-->
+
 
 <br>
 
