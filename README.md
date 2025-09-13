@@ -108,7 +108,7 @@ I have also added features that ***are not present in the actual game*** and tha
 
 ## IV. AI info
 
-- The code was written with the help of Copilot *(Chat, Edit & Agent)*, along with these LLMs:
+- The code was written with the help of Copilot Pro *(Chat, Edit & Agent)*, along with these LLMs:
   - GPT-4o
   - GPT-4.1
   - GPT-5 (Preview)
